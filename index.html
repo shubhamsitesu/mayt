@@ -1,0 +1,2371 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Máy Tính Online - Máy Tính Chính Xác, Nhanh Chóng | May-tinh.com</title>
+    <meta name="description" content="Máy tính online miễn phí với nhiều chức năng: máy tính cơ bản, khoa học, tài chính, BMI, chuyển đổi đơn vị. Dễ sử dụng, chính xác, hỗ trợ mọi thiết bị. Máy Tính tốt nhất Việt Nam!">
+    <meta name="keywords" content="máy tính, may tinh, máy tính online, máy tính khoa học, máy tính tài chính, máy tính bmi, máy tính cơ bản">
+    <meta name="author" content="May-tinh.com">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://may-tinh.com/">
+    <meta property="og:title" content="Máy Tính Online - Máy Tính Chính Xac, Nhanh Chóng | May-tinh.com">
+    <meta property="og:description" content="Máy tính online miễn phí với nhiều chức năng: máy tính cơ bản, khoa học, tài chính, BMI, chuyển đổi đơn vị. Dễ sử dụng, chính xác!">
+    <meta property="og:image" content="https://may-tinh.com/images/calculator-og.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://may-tinh.com/">
+    <meta property="twitter:title" content="Máy Tính Online - Máy Tính Chính Xac, Nhanh Chóng | May-tinh.com">
+    <meta property="twitter:description" content="Máy tính online miễn phí với nhiều chức năng: máy tính cơ bản, khoa học, tài chính, BMI, chuyển đổi đơn vị. Dễ sử dụng, chính xác!">
+    <meta property="twitter:image" content="https://may-tinh.com/images/calculator-og.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="https://may-tinh.com/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="https://may-tinh.com/apple-touch-icon.png">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #4285f4; /* Google blue */
+            --secondary-color: #34a853; /* Google green */
+            --accent-color: #ea4335; /* Google red */
+            --dark-color: #202124;
+            --light-color: #f8f9fa;
+            --gray-color: #5f6368;
+            --light-gray: #dadce0;
+            --white: #ffffff;
+            --button-bg: #f1f3f4;
+            --button-hover: #e8eaed;
+            --function-bg: #e8f0fe;
+            --function-hover: #d2e3fc;
+            --operator-bg: #e8f0fe;
+            --operator-hover: #d2e3fc;
+            --equals-bg: #4285f4;
+            --equals-hover: #3367d6;
+            --clear-bg: #f8f9fa;
+            --clear-hover: #f1f3f4;
+            --clear-border: #dadce0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 500;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        .header {
+            background-color: var(--white);
+            box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--primary-color);
+            font-size: 22px;
+            font-weight: 500;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 24px;
+            color: var(--primary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 25px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: var(--dark-color);
+        }
+        
+        /* Breadcrumbs */
+        .breadcrumbs {
+            background-color: var(--light-color);
+            padding: 8px 0;
+            font-size: 13px;
+        }
+        
+        .breadcrumbs a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+        
+        .breadcrumbs .separator {
+            margin: 0 8px;
+            color: var(--gray-color);
+        }
+        
+        /* Calculator Section */
+        .calculator-section {
+            padding: 40px 0;
+            background-color: var(--white);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .section-title h2 {
+            font-size: 28px;
+            color: var(--dark-color);
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .section-title p {
+            font-size: 16px;
+            color: var(--gray-color);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .calculator-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow: hidden;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .calculator-tabs {
+            display: flex;
+            background-color: var(--light-color);
+        }
+        
+        .calculator-tab {
+            flex: 1;
+            padding: 12px 0;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-weight: 500;
+            color: var(--gray-color);
+            transition: all 0.2s;
+            font-size: 14px;
+        }
+        
+        .calculator-tab.active {
+            background-color: var(--white);
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+        }
+        
+        .calculator-display {
+            background-color: var(--white);
+            padding: 20px;
+            text-align: right;
+            min-height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            border-bottom: 1px solid var(--light-gray);
+            position: relative;
+        }
+        
+        .calculator-expression {
+            font-size: 16px;
+            color: var(--gray-color);
+            min-height: 24px;
+            margin-bottom: 8px;
+        }
+        
+        .calculator-result {
+            font-size: 36px;
+            color: var(--dark-color);
+            font-weight: 400;
+            min-height: 48px;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        .history-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 18px;
+            color: var(--gray-color);
+            cursor: pointer;
+        }
+        
+        .history-panel {
+            position: fixed;
+            top: 0;
+            right: -350px;
+            width: 350px;
+            height: 100%;
+            background-color: var(--white);
+            box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+            z-index: 1001;
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .history-panel.active {
+            right: 0;
+        }
+        
+        .history-header {
+            padding: 15px;
+            border-bottom: 1px solid var(--light-gray);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .history-header h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+        
+        .close-history {
+            background: none;
+            border: none;
+            font-size: 18px;
+            color: var(--gray-color);
+            cursor: pointer;
+        }
+        
+        .history-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+        }
+        
+        .history-item {
+            padding: 10px;
+            border-bottom: 1px solid var(--light-gray);
+            cursor: pointer;
+        }
+        
+        .history-item:hover {
+            background-color: var(--light-color);
+        }
+        
+        .history-expression {
+            font-size: 14px;
+            color: var(--gray-color);
+        }
+        
+        .history-result {
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--dark-color);
+            text-align: right;
+        }
+        
+        .history-footer {
+            padding: 15px;
+            border-top: 1px solid var(--light-gray);
+            text-align: center;
+        }
+        
+        .clear-history {
+            background-color: var(--accent-color);
+            color: var(--white);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .calculator-buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            background-color: var(--white);
+            padding: 12px;
+        }
+        
+        .calc-btn {
+            background-color: var(--button-bg);
+            border: none;
+            padding: 28px 0;
+            font-size: 20px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            font-weight: 400;
+            color: var(--dark-color);
+            border-radius: 50%;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .calc-btn:hover {
+            background-color: var(--button-hover);
+        }
+        
+        .calc-btn:active {
+            transform: scale(0.95);
+            box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+        }
+        
+        .calc-btn.operator {
+            background-color: var(--operator-bg);
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        
+        .calc-btn.operator:hover {
+            background-color: var(--operator-hover);
+        }
+        
+        .calc-btn.equals {
+            background-color: var(--equals-bg);
+            color: var(--white);
+            font-weight: 500;
+            grid-column: span 2;
+            border-radius: 25px;
+        }
+        
+        .calc-btn.equals:hover {
+            background-color: var(--equals-hover);
+        }
+        
+        .calc-btn.clear {
+            background-color: var(--clear-bg);
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+        
+        .calc-btn.clear:hover {
+            background-color: var(--clear-hover);
+        }
+        
+        .calc-btn.function {
+            background-color: var(--function-bg);
+            color: var(--primary-color);
+            font-weight: 500;
+            font-size: 16px;
+        }
+        
+        .calc-btn.function:hover {
+            background-color: var(--function-hover);
+        }
+        
+        .calc-btn.zero {
+            grid-column: span 2;
+            text-align: left;
+            padding-left: 28px;
+            border-radius: 25px;
+        }
+        
+        /* Scientific Calculator */
+        .scientific-buttons {
+            display: none;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+            background-color: var(--white);
+            padding: 8px;
+        }
+        
+        .scientific-buttons.active {
+            display: grid;
+        }
+        
+        .scientific-buttons .calc-btn {
+            padding: 20px 0;
+            font-size: 16px;
+            border-radius: 50%;
+        }
+        
+        .scientific-buttons .calc-btn.zero {
+            grid-column: span 1;
+            text-align: center;
+            padding-left: 0;
+            border-radius: 50%;
+        }
+        
+        /* Programmer Calculator */
+        .programmer-buttons {
+            display: none;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+            background-color: var(--white);
+            padding: 8px;
+        }
+        
+        .programmer-buttons.active {
+            display: grid;
+        }
+        
+        .programmer-buttons .calc-btn {
+            padding: 20px 0;
+            font-size: 16px;
+            border-radius: 50%;
+        }
+        
+        .programmer-buttons .calc-btn.zero {
+            grid-column: span 1;
+            text-align: center;
+            padding-left: 0;
+            border-radius: 50%;
+        }
+        
+        /* Angle Mode Toggle */
+        .angle-mode {
+            display: none;
+            justify-content: center;
+            margin-bottom: 10px;
+            background-color: var(--light-color);
+            padding: 5px;
+            border-radius: 4px;
+        }
+        
+        .angle-mode.active {
+            display: flex;
+        }
+        
+        .angle-mode button {
+            background: none;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--gray-color);
+            transition: all 0.2s;
+            border-radius: 4px;
+        }
+        
+        .angle-mode button.active {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+        
+        /* Summary Section */
+        .summary-section {
+            padding: 60px 0;
+            background-color: var(--white);
+        }
+        
+        .summary-content {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--dark-color);
+        }
+        
+        .summary-content h3 {
+            font-size: 24px;
+            color: var(--primary-color);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .summary-content p {
+            margin-bottom: 20px;
+        }
+        
+        .summary-content ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .summary-content li {
+            margin-bottom: 10px;
+        }
+        
+        /* Features Section */
+        .features-section {
+            padding: 60px 0;
+            background-color: var(--light-color);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+            font-weight: 500;
+        }
+        
+        .feature-card p {
+            color: var(--gray-color);
+            margin-bottom: 20px;
+        }
+        
+        /* Calculators Section */
+        .calculators-section {
+            padding: 60px 0;
+            background-color: var(--white);
+        }
+        
+        .calculators-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .calculator-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .calculator-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .calculator-card-img {
+            height: 160px;
+            background-color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .calculator-card-img i {
+            font-size: 60px;
+            color: var(--white);
+        }
+        
+        .calculator-card-body {
+            padding: 20px;
+        }
+        
+        .calculator-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+            font-weight: 500;
+        }
+        
+        .calculator-card p {
+            color: var(--gray-color);
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        .calculator-card a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .calculator-card a i {
+            margin-left: 5px;
+        }
+        
+        /* Blog Section */
+        .blog-section {
+            padding: 60px 0;
+            background-color: var(--light-color);
+        }
+        
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .blog-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .blog-img {
+            height: 200px;
+            background-color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 18px;
+            font-weight: 500;
+        }
+        
+        .blog-body {
+            padding: 25px;
+        }
+        
+        .blog-date {
+            font-size: 14px;
+            color: var(--gray-color);
+            margin-bottom: 10px;
+        }
+        
+        .blog-title {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+            font-weight: 500;
+        }
+        
+        .blog-excerpt {
+            color: var(--gray-color);
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .blog-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .blog-link i {
+            margin-left: 5px;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            padding: 60px 0;
+            background-color: var(--white);
+        }
+        
+        .accordion {
+            margin-top: 30px;
+        }
+        
+        .accordion-item {
+            border: none;
+            border-radius: 0;
+            margin-bottom: 15px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .accordion-header {
+            border-radius: 0;
+        }
+        
+        .accordion-button {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            font-weight: 500;
+            font-size: 16px;
+            box-shadow: none;
+            border-radius: 0;
+        }
+        
+        .accordion-button:not(.collapsed) {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+        
+        .accordion-button:focus {
+            box-shadow: none;
+        }
+        
+        .accordion-button::after {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23202124'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        }
+        
+        .accordion-button:not(.collapsed)::after {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        }
+        
+        .accordion-body {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        /* About Section */
+        .about-section {
+            padding: 60px 0;
+            background-color: var(--light-color);
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .about-text h3 {
+            font-size: 28px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+        
+        .about-img {
+            background-color: var(--primary-color);
+            height: 400px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 24px;
+            font-weight: 500;
+        }
+        
+        /* Ad Sections */
+        .ad-section {
+            padding: 30px 0;
+            background-color: var(--light-color);
+            text-align: center;
+        }
+        
+        .ad-container {
+            max-width: 728px;
+            margin: 0 auto;
+            background-color: var(--light-gray);
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-color);
+            border: 1px dashed var(--light-gray);
+        }
+        
+        .ad-container.sidebar {
+            height: 250px;
+            max-width: 300px;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--dark-color);
+            color: var(--white);
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            font-weight: 500;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.2s;
+            font-size: 14px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            margin-right: 10px;
+            transition: background-color 0.2s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary-color);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: #aaa;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .section-title h2 {
+                font-size: 24px;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-img {
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .calculator-section, .summary-section, .features-section, .calculators-section, .blog-section, .faq-section, .about-section {
+                padding: 30px 0;
+            }
+            
+            .about-content {
+                gap: 30px;
+            }
+            
+            .calc-btn {
+                padding: 22px 0;
+                font-size: 18px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .calculator-result {
+                font-size: 28px;
+            }
+            
+            .calc-btn {
+                padding: 20px 0;
+                font-size: 16px;
+            }
+            
+            .calculator-buttons {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 8px;
+                padding: 8px;
+            }
+            
+            .scientific-buttons {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .programmer-buttons {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .calc-btn.zero {
+                grid-column: span 2;
+                text-align: left;
+                padding-left: 20px;
+            }
+            
+            .scientific-buttons .calc-btn.zero {
+                grid-column: span 1;
+                text-align: center;
+                padding-left: 0;
+            }
+            
+            .programmer-buttons .calc-btn.zero {
+                grid-column: span 1;
+                text-align: center;
+                padding-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="https://may-tinh.com" class="logo">
+                    <i class="fas fa-calculator"></i>
+                    Máy Tính
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#home">Trang Chủ</a></li>
+                    <li><a href="#calculators">Máy Tính</a></li>
+                    <li><a href="#features">Tính Năng</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#about">Về Chúng Tôi</a></li>
+                </ul>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs">
+        <div class="container">
+            <a href="https://may-tinh.com">Trang chủ</a>
+            <span class="separator">/</span>
+            <span>Máy Tính Online</span>
+        </div>
+    </div>
+
+    <!-- Calculator Section -->
+    <section class="calculator-section" id="calculators">
+        <div class="container">
+            <div class="section-title">
+                <h2>Máy Tính Online Miễn Phí</h2>
+                <p>Công cụ tính toán trực tuyến chính xác, nhanh chóng và dễ sử dụng cho mọi người Việt Nam</p>
+            </div>
+            
+            <div class="calculator-container">
+                <div class="calculator-tabs">
+                    <button class="calculator-tab active" onclick="switchCalculator('basic', event)">Cơ Bản</button>
+                    <button class="calculator-tab" onclick="switchCalculator('scientific', event)">Khoa Học</button>
+                    <button class="calculator-tab" onclick="switchCalculator('programmer', event)">Lập Trình</button>
+                </div>
+                
+                <div class="angle-mode" id="angle-mode">
+                    <button class="active" onclick="setAngleMode('deg', event)">DEG</button>
+                    <button onclick="setAngleMode('rad', event)">RAD</button>
+                    <button onclick="setAngleMode('grad', event)">GRAD</button>
+                </div>
+                
+                <div class="calculator-display">
+                    <div class="calculator-expression" id="expression"></div>
+                    <div class="calculator-result" id="result">0</div>
+                    <button class="history-btn" onclick="toggleHistory()">
+                        <i class="fas fa-history"></i>
+                    </button>
+                </div>
+                
+                <div class="calculator-buttons" id="basic-buttons">
+                    <button class="calc-btn clear" onclick="clearDisplay()">AC</button>
+                    <button class="calc-btn operator" onclick="toggleSign()">+/-</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('%')">%</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('/')">÷</button>
+                    
+                    <button class="calc-btn" onclick="appendToDisplay('7')">7</button>
+                    <button class="calc-btn" onclick="appendToDisplay('8')">8</button>
+                    <button class="calc-btn" onclick="appendToDisplay('9')">9</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('*')">×</button>
+                    
+                    <button class="calc-btn" onclick="appendToDisplay('4')">4</button>
+                    <button class="calc-btn" onclick="appendToDisplay('5')">5</button>
+                    <button class="calc-btn" onclick="appendToDisplay('6')">6</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('-')">−</button>
+                    
+                    <button class="calc-btn" onclick="appendToDisplay('1')">1</button>
+                    <button class="calc-btn" onclick="appendToDisplay('2')">2</button>
+                    <button class="calc-btn" onclick="appendToDisplay('3')">3</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('+')">+</button>
+                    
+                    <button class="calc-btn zero" onclick="appendToDisplay('0')">0</button>
+                    <button class="calc-btn" onclick="appendToDisplay('.')">.</button>
+                    <button class="calc-btn equals" onclick="calculate()">=</button>
+                </div>
+                
+                <div class="scientific-buttons" id="scientific-buttons">
+                    <button class="calc-btn function" onclick="appendFunction('sin', event)">sin</button>
+                    <button class="calc-btn function" onclick="appendFunction('cos', event)">cos</button>
+                    <button class="calc-btn function" onclick="appendFunction('tan', event)">tan</button>
+                    <button class="calc-btn function" onclick="appendFunction('log', event)">log</button>
+                    <button class="calc-btn function" onclick="appendFunction('ln', event)">ln</button>
+                    
+                    <button class="calc-btn function" onclick="appendFunction('asin', event)">sin⁻¹</button>
+                    <button class="calc-btn function" onclick="appendFunction('acos', event)">cos⁻¹</button>
+                    <button class="calc-btn function" onclick="appendFunction('atan', event)">tan⁻¹</button>
+                    <button class="calc-btn function" onclick="appendFunction('sqrt', event)">√</button>
+                    <button class="calc-btn function" onclick="appendToDisplay('^')">xʸ</button>
+                    
+                    <button class="calc-btn function" onclick="factorial(event)">x!</button>
+                    <button class="calc-btn function" onclick="appendFunction('abs', event)">|x|</button>
+                    <button class="calc-btn function" onclick="appendToDisplay('π')">π</button>
+                    <button class="calc-btn function" onclick="appendToDisplay('e')">e</button>
+                    <button class="calc-btn function" onclick="appendFunction('exp', event)">eˣ</button>
+                    
+                    <button class="calc-btn clear" onclick="clearDisplay()">AC</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('(')">(</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay(')')">)</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('/')">÷</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('%')">%</button>
+                    
+                    <button class="calc-btn" onclick="appendToDisplay('7')">7</button>
+                    <button class="calc-btn" onclick="appendToDisplay('8')">8</button>
+                    <button class="calc-btn" onclick="appendToDisplay('9')">9</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('*')">×</button>
+                    <button class="calc-btn operator" onclick="memoryRecall(event)">MR</button>
+                    
+                    <button class="calc-btn" onclick="appendToDisplay('4')">4</button>
+                    <button class="calc-btn" onclick="appendToDisplay('5')">5</button>
+                    <button class="calc-btn" onclick="appendToDisplay('6')">6</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('-')">−</button>
+                    <button class="calc-btn operator" onclick="memoryClear(event)">MC</button>
+                    
+                    <button class="calc-btn" onclick="appendToDisplay('1')">1</button>
+                    <button class="calc-btn" onclick="appendToDisplay('2')">2</button>
+                    <button class="calc-btn" onclick="appendToDisplay('3')">3</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('+')">+</button>
+                    <button class="calc-btn operator" onclick="memoryAdd(event)">M+</button>
+                    
+                    <button class="calc-btn zero" onclick="appendToDisplay('0')">0</button>
+                    <button class="calc-btn" onclick="appendToDisplay('.')">.</button>
+                    <button class="calc-btn" onclick="backspace()">⌫</button>
+                    <button class="calc-btn equals" onclick="calculate()">=</button>
+                    <button class="calc-btn operator" onclick="memorySubtract(event)">M-</button>
+                </div>
+                
+                <div class="programmer-buttons" id="programmer-buttons">
+                    <button class="calc-btn function" onclick="convertToHex(event)">HEX</button>
+                    <button class="calc-btn function" onclick="convertToDec(event)">DEC</button>
+                    <button class="calc-btn function" onclick="convertToOct(event)">OCT</button>
+                    <button class="calc-btn function" onclick="convertToBin(event)">BIN</button>
+                    <button class="calc-btn function" onclick="appendToDisplay('π')">π</button>
+                    
+                    <button class="calc-btn function" onclick="appendToDisplay('0b')">0b</button>
+                    <button class="calc-btn function" onclick="appendToDisplay('0o')">0o</button>
+                    <button class="calc-btn function" onclick="appendToDisplay('0x')">0x</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('<<')">≪</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('>>')">≫</button>
+                    
+                    <button class="calc-btn operator" onclick="appendToDisplay('&')">&amp;</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('|')">|</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('^')">⊕</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('~')">~</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('!')">!</button>
+                    
+                    <button class="calc-btn clear" onclick="clearDisplay()">AC</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('(')">(</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay(')')">)</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('/')">÷</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('*')">×</button>
+                    
+                    <button class="calc-btn" onclick="appendToDisplay('7')">7</button>
+                    <button class="calc-btn" onclick="appendToDisplay('8')">8</button>
+                    <button class="calc-btn" onclick="appendToDisplay('9')">9</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('-')">−</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('%')">%</button>
+                    
+                    <button class="calc-btn" onclick="appendToDisplay('4')">4</button>
+                    <button class="calc-btn" onclick="appendToDisplay('5')">5</button>
+                    <button class="calc-btn" onclick="appendToDisplay('6')">6</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('+')">+</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('&&')">&amp;&amp;</button>
+                    
+                    <button class="calc-btn" onclick="appendToDisplay('1')">1</button>
+                    <button class="calc-btn" onclick="appendToDisplay('2')">2</button>
+                    <button class="calc-btn" onclick="appendToDisplay('3')">3</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('||')">||</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('!')">!</button>
+                    
+                    <button class="calc-btn zero" onclick="appendToDisplay('0')">0</button>
+                    <button class="calc-btn" onclick="appendToDisplay('.')">.</button>
+                    <button class="calc-btn" onclick="backspace()">⌫</button>
+                    <button class="calc-btn equals" onclick="calculate()">=</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('==')">==</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- History Panel -->
+    <div class="history-panel" id="history-panel">
+        <div class="history-header">
+            <h3>Lịch sử tính toán</h3>
+            <button class="close-history" onclick="toggleHistory()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="history-list" id="history-list">
+            <!-- History items will be added here dynamically -->
+        </div>
+        <div class="history-footer">
+            <button class="clear-history" onclick="clearHistory()">Xóa lịch sử</button>
+        </div>
+    </div>
+
+    <!-- Ad Section 1 -->
+    <section class="ad-section">
+        <div class="container">
+            <div class="ad-container">
+                <!-- AdSense Code Here -->
+                <p>Quảng cáo 728x90</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Summary Section -->
+    <section class="summary-section" id="summary">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tất Cả Về Máy Tính Online</h2>
+                <p>Khám phá thế giới tính toán trực tuyến với máy tính của chúng tôi</p>
+            </div>
+            
+            <div class="summary-content">
+                <h3>Máy Tính Online - Giải Pháp Tính Toán Toàn Diện</h3>
+                <p>Trong thời đại công nghệ số hiện nay, việc có một công cụ tính toán đáng tin cậy và dễ tiếp cận là nhu cầu thiết yếu của mọi người. Máy tính online tại May-tinh.com được thiết kế để đáp ứng nhu cầu đó, mang đến một nền tảng tính toán trực tuyến hoàn toàn miễn phí, chính xác và dễ sử dụng cho mọi người Việt Nam.</p>
+                
+                <p>Máy tính của chúng tôi không chỉ là một công cụ đơn giản thực hiện các phép tính cơ bản, mà còn là một giải pháp toàn diện với nhiều tính năng nâng cao. Từ máy tính cơ bản cho các phép tính cộng, trừ, nhân, chia, đến máy tính khoa học với các hàm lượng giác, logarit, lũy thừa, và máy tính lập trình với các phép toán trên bit, tất cả đều được tích hợp trong một giao diện thân thiện và trực quan.</p>
+                
+                <p>Điểm đặc biệt của máy tính online của chúng tôi là khả năng truy cập từ mọi thiết bị có kết nối internet. Bạn không cần phải cài đặt bất kỳ phần mềm nào hay lo lắng về việc máy tính của mình có đủ cấu hình để chạy các ứng dụng nặng. Chỉ cần mở trình duyệt web và truy cập May-tinh.com, bạn đã có ngay một công cụ tính toán mạnh mẽ trong tay.</p>
+                
+                <h3>Lịch Sử Phát Triển Của Máy Tính</h3>
+                <p>Máy tính đã trải qua một hành trình phát triển ấn tượng từ những công cụ cơ bản nhất đến các siêu máy tính hiện đại. Khởi đầu với những vật dụng đếm đơn giản như ngón tay, viên sỏi, cây gậy, con người đã phát minh ra bàn tính cổ đại (abacus) ở Trung Quốc khoảng 2400 năm trước Công nguyên. Đây được coi là tổ tiên của máy tính hiện đại, cho phép thực hiện các phép tính cộng, trừ một cách nhanh chóng.</p>
+                
+                <p>Vào thế kỷ 17, nhà toán học người Pháp Blaise Pascal đã phát minh ra "Pascaline", máy tính cơ học đầu tiên có thể thực hiện các phép tính cộng và trừ. Tiếp theo, Gottfried Wilhelm Leibniz đã cải tiến máy tính của Pascal bằng cách thêm khả năng nhân và chia. Những phát minh này đặt nền móng cho sự phát triển của máy tính cơ học trong suốt thế kỷ 18 và 19.</p>
+                
+                <p>Đầu thế kỷ 20, Charles Babbage đã thiết kế "Difference Engine", một máy tính cơ học có thể tính toán các hàm toán học phức tạp. Ông cũng là người đưa ra ý tưởng về "Analytical Engine", một cỗ máy có thể được lập trình để thực hiện các phép tính khác nhau, được coi là tiền thân của máy tính hiện đại.</p>
+                
+                <p>Thập niên 1940 đánh dấu sự ra đời của máy tính điện tử đầu tiên - ENIAC (Electronic Numerical Integrator and Computer). Chiếc máy khổng lồ này nặng khoảng 30 tấn, tiêu thụ điện năng tương đương với một thị trấn nhỏ, nhưng nó đã mở ra kỷ nguyên mới của công nghệ tính toán.</p>
+                
+                <p>Từ những năm 1970, với sự ra đời của vi xử lý, máy tính cá nhân bắt đầu xuất hiện và dần trở nên phổ biến. Các công ty như Apple, IBM, và Microsoft đã đóng vai trò quan trọng trong việc đưa máy tính đến với mọi người dùng. Và ngày nay, với sự phát triển của internet, máy tính online đã trở thành một công cụ không thể thiếu trong cuộc sống hàng ngày.</p>
+                
+                <h3>Tầm Quan Trọng Của Máy Tính Trong Cuộc Sống Hiện Đại</h3>
+                <p>Máy tính đã trở thành một phần không thể thiếu trong cuộc sống hiện đại, ảnh hưởng đến hầu hết mọi khía cạnh từ giáo dục, kinh doanh, khoa học đến giải trí. Trong giáo dục, máy tính giúp sinh viên và học sinh thực hiện các phép tính phức tạp, trực quan hóa các khái niệm toán học, và thực hiện các dự án nghiên cứu. Các giáo viên cũng sử dụng máy tính để tạo ra bài giảng tương tác và đánh giá kết quả học tập của học sinh.</p>
+                
+                <p>Trong kinh doanh, máy tính là công cụ thiết yếu cho việc quản lý tài chính, dự báo doanh thu, tính toán lợi nhuận, và phân tích dữ liệu. Các doanh nghiệp từ nhỏ đến lớn đều dựa vào máy tính để vận hành hiệu quả, từ việc quản lý kho hàng đến tối ưu hóa chuỗi cung ứng.</p>
+                
+                <p>Trong lĩnh vực khoa học và kỹ thuật, máy tính đóng vai trò trung tâm trong việc mô phỏng các hiện tượng tự nhiên, thiết kế các sản phẩm mới, và phân tích dữ liệu thí nghiệm. Các nhà khoa học sử dụng máy tính để giải các phương trình phức tạp, mô hình hóa hệ thống khí hậu, và thậm chí là khám phá vũ trụ.</p>
+                
+                <p>Trong y tế, máy tính giúp các bác sĩ chẩn đoán bệnh, phân tích kết quả xét nghiệm, và lập kế hoạch điều trị. Các thiết bị y tế hiện đại như máy MRI, CT scan đều dựa trên công nghệ tính toán để tạo ra hình ảnh chi tiết bên trong cơ thể con người.</p>
+                
+                <p>Ngay cả trong cuộc sống hàng ngày, máy tính cũng hiện diện trong mọi thứ từ điện thoại thông minh, đồng hồ thông minh đến các thiết bị gia dụng thông minh. Chúng giúp chúng ta quản lý thời gian, theo dõi sức khỏe, giải trí và kết nối với người khác.</p>
+                
+                <h3>Ưu Điểm Của Máy Tính Online So Với Máy Tính Cứng</h3>
+                <p>Máy tính online tại May-tinh.com mang lại nhiều ưu điểm vượt trội so với máy tính cứng truyền thống:</p>
+                
+                <ul>
+                    <li><strong>Tính tiện lợi:</strong> Bạn có thể truy cập máy tính của chúng tôi từ bất kỳ đâu, chỉ cần có kết nối internet. Không cần mang theo một thiết bị riêng hay lo lắng về việc hết pin.</li>
+                    <li><strong>Không cần cài đặt:</strong> Không cần tải xuống hay cài đặt bất kỳ phần mềm nào. Chỉ cần mở trình duyệt và truy cập trang web là bạn có thể sử dụng ngay.</li>
+                    <li><strong>Luôn cập nhật:</strong> Máy tính online của chúng tôi luôn được cập nhật với các tính năng mới nhất và sửa lỗi mà bạn không cần làm gì cả.</li>
+                    <li><strong>Đa nền tảng:</strong> Hoạt động tốt trên mọi hệ điều hành (Windows, macOS, Linux) và mọi thiết bị (máy tính, điện thoại, máy tính bảng).</li>
+                    <li><strong>Tiết kiệm chi phí:</strong> Hoàn toàn miễn phí, không cần chi tiền mua máy tính cứng hay phần mềm đắt tiền.</li>
+                    <li><strong>Tính linh hoạt:</strong> Dễ dàng chuyển đổi giữa các loại máy tính khác nhau (cơ bản, khoa học, lập trình) chỉ với một cú nhấp chuột.</li>
+                    <li><strong>Lưu trữ lịch sử:</strong> Máy tính của chúng tôi lưu trữ lịch sử tính toán giúp bạn dễ dàng theo dõi và kiểm tra lại các phép tính trước đó.</li>
+                    <li><strong>Bảo mật:</strong> Tất cả các phép tính được thực hiện trên trình duyệt của bạn, không có dữ liệu nào được gửi đến máy chủ, đảm bảo tính riêng tư.</li>
+                </ul>
+                
+                <h3>Các Loại Máy Tính Có Sẵn Tại May-tinh.com</h3>
+                <p>Tại May-tinh.com, chúng tôi cung cấp nhiều loại máy tính khác nhau để đáp ứng mọi nhu cầu tính toán của bạn:</p>
+                
+                <p><strong>Máy tính cơ bản:</strong> Đây là loại máy tính phổ biến nhất, thực hiện các phép tính cơ bản như cộng, trừ, nhân, chia, phần trăm, căn bậc hai. Máy tính cơ bản của chúng tôi còn có các chức năng nhớ (M+, M-, MR, MC) giúp bạn lưu trữ và sử dụng lại các kết quả tính toán.</p>
+                
+                <p><strong>Máy tính khoa học:</strong> Dành cho học sinh, sinh viên và các chuyên gia cần thực hiện các phép tính phức tạp. Máy tính khoa học của chúng tôi có các hàm lượng giác (sin, cos, tan), logarit (log, ln), hàm mũ (e^x, 10^x), và các phép toán khác như giai thừa, giá trị tuyệt đối, và các hằng số toán học (π, e).</p>
+                
+                <p><strong>Máy tính lập trình:</strong> Được thiết kế cho các lập trình viên và kỹ sư phần mềm. Máy tính này hỗ trợ các phép toán trên bit (AND, OR, XOR, NOT), dịch bit (<<, >>), chuyển đổi giữa các hệ cơ số (nhị phân, bát phân, thập phân, thập lục phân), và các phép toán logic (&&, ||, !).</p>
+                
+                <p>Ngoài ra, chúng tôi còn cung cấp các loại máy tính chuyên dụng khác như:</p>
+                
+                <ul>
+                    <li><strong>Máy tính tài chính:</strong> Tính lãi suất, vay vốn, đầu tư, tiết kiệm, và các công cụ tài chính khác.</li>
+                    <li><strong>Máy tính BMI:</strong> Tính chỉ số khối cơ thể, đánh giá tình trạng sức khỏe.</li>
+                    <li><strong>Máy tính chuyển đổi đơn vị:</strong> Chuyển đổi giữa các đơn vị đo lường, tiền tệ, nhiệt độ, và nhiều hơn nữa.</li>
+                    <li><strong>Máy tính thống kê:</strong> Tính toán các chỉ số thống kê như trung bình, phương sai, độ lệch chuẩn.</li>
+                </ul>
+                
+                <h3>Hướng Dẫn Sử Dụng Máy Tính Online</h3>
+                <p>Sử dụng máy tính online tại May-tinh.com rất đơn giản và trực quan. Dưới đây là hướng dẫn chi tiết cho từng loại máy tính:</p>
+                
+                <p><strong>Máy tính cơ bản:</strong></p>
+                <ol>
+                    <li>Mở trình duyệt web và truy cập May-tinh.com.</li>
+                    <li>Chọn tab "Cơ Bản" trên máy tính.</li>
+                    <li>Nhập số và phép toán bằng cách nhấp vào các nút trên màn hình hoặc sử dụng bàn phím.</li>
+                    <li>Sử dụng nút "AC" để xóa tất cả, nút "⌫" để xóa ký tự cuối cùng.</li>
+                    <li>Nhấn "=" để xem kết quả.</li>
+                    <li>Sử dụng các nút nhớ (M+, M-, MR, MC) để lưu trữ và gọi lại các giá trị.</li>
+                </ol>
+                
+                <p><strong>Máy tính khoa học:</strong></p>
+                <ol>
+                    <li>Mở trình duyệt web và truy cập May-tinh.com.</li>
+                    <li>Chọn tab "Khoa Học" trên máy tính.</li>
+                    <li>Chọn chế độ góc (DEG, RAD, GRAD) ở trên màn hình.</li>
+                    <li>Nhập số và chọn hàm toán học bạn muốn sử dụng (sin, cos, tan, log, v.v.).</li>
+                    <li>Nhập giá trị trong ngoặc đơn sau hàm.</li>
+                    <li>Sử dụng các hằng số π và e bằng cách nhấp vào nút tương ứng.</li>
+                    <li>Nhấn "=" để xem kết quả.</li>
+                </ol>
+                
+                <p><strong>Máy tính lập trình:</strong></p>
+                <ol>
+                    <li>Mở trình duyệt web và truy cập May-tinh.com.</li>
+                    <li>Chọn tab "Lập Trình" trên máy tính.</li>
+                    <li>Nhập số và chọn phép toán bit hoặc logic bạn muốn thực hiện.</li>
+                    <li>Sử dụng các nút chuyển đổi hệ cơ số (HEX, DEC, OCT, BIN) để đổi giữa các hệ số.</li>
+                    <li>Nhấn "=" để xem kết quả.</li>
+                </ol>
+                
+                <h3>Mẹo Và Thủ Thuật Sử Dụng Máy Tính Hiệu Quả</h3>
+                <p>Để tận dụng tối đa khả năng của máy tính online tại May-tinh.com, dưới đây là một số mẹo và thủ thuật hữu ích:</p>
+                
+                <ul>
+                    <li><strong>Sử dụng bàn phím:</strong> Bạn có thể sử dụng bàn phím để nhập số và phép toán nhanh hơn. Các phím số, phép toán (+, -, *, /), và Enter (để tính kết quả) đều được hỗ trợ.</li>
+                    <li><strong>Sử dụng ngoặc đơn:</strong> Khi thực hiện các phép tính phức tạp, hãy sử dụng ngoặc đơn để đảm bảo thứ tự ưu tiên của phép tính. Ví dụ: (5 + 3) * 2 = 16.</li>
+                    <li><strong>Lưu trữ kết quả:</strong> Sử dụng các nút nhớ (M+, M-, MR, MC) để lưu trữ các kết quả tính toán và sử dụng lại sau này. Điều này đặc biệt hữu ích khi bạn cần sử dụng một giá trị nhiều lần trong các phép tính khác nhau.</li>
+                    <li><strong>Kiểm tra lịch sử:</strong> Máy tính của chúng tôi hiển thị lịch sử các phép tính gần nhất, giúp bạn dễ dàng theo dõi và kiểm tra lại các phép tính trước đó.</li>
+                    <li><strong>Sử dụng hàm khoa học:</strong> Khi sử dụng máy tính khoa học, hãy đảm bảo bạn đã chọn đúng đơn vị góc (DEG, RAD, GRAD) cho các hàm lượng giác. Máy tính của chúng tôi mặc định sử dụng độ (DEG).</li>
+                    <li><strong>Chuyển đổi hệ cơ số:</strong> Khi sử dụng máy tính lập trình, bạn có thể dễ dàng chuyển đổi giữa các hệ cơ số bằng cách nhập số và nhấn nút chuyển đổi tương ứng (HEX, DEC, OCT, BIN).</li>
+                    <li><strong>Sử dụng hằng số:</strong> Máy tính khoa học của chúng tôi có các hằng số toán học quan trọng như π (pi) và e (số Euler). Bạn có thể sử dụng chúng bằng cách nhấp vào nút tương ứng.</li>
+                    <li><strong>Tính toán lũy thừa:</strong> Để tính lũy thừa, bạn có thể sử dụng nút "^" trên máy tính khoa học hoặc lập trình. Ví dụ: 2^3 = 8.</li>
+                </ul>
+                
+                <h3>Ứng Dụng Thực Tế Của Máy Tính Trong Đời Sống</h3>
+                <p>Máy tính không chỉ là một công cụ học thuật mà còn có nhiều ứng dụng thực tế trong đời sống hàng ngày. Dưới đây là một số ví dụ về cách bạn có thể sử dụng máy tính online của chúng tôi trong các tình huống thực tế:</p>
+                
+                <p><strong>Quản lý tài chính cá nhân:</strong> Sử dụng máy tính cơ bản để tính toán thu nhập, chi tiêu, và tiết kiệm hàng tháng. Bạn cũng có thể sử dụng máy tính tài chính để tính lãi suất khi vay tiền hoặc đầu tư.</p>
+                
+                <p><strong>Nấu ăn và làm bánh:</strong> Khi cần điều chỉnh công thức cho số người khác nhau, máy tính giúp bạn tính toán chính xác lượng nguyên liệu cần thiết. Ví dụ: nếu công thức cho 4 người nhưng bạn cần nấu cho 6 người, hãy sử dụng máy tính để tính tỷ lệ 6/4 = 1.5 và nhân tất cả nguyên liệu với 1.5.</p>
+                
+                <p><strong>Tu sửa nhà cửa:</strong> Khi cần tính toán lượng vật liệu như sơn, gạch, hoặc gỗ, máy tính giúp bạn ước tính chính xác số lượng cần mua, tránh lãng phí hoặc thiếu hụt.</p>
+                
+                <p><strong>Lập kế hoạch du lịch:</strong> Sử dụng máy tính để tính toán ngân sách du lịch, chuyển đổi tiền tệ, hoặc tính khoảng cách và thời gian di chuyển.</p>
+                
+                <p><strong>Giáo dục và học tập:</strong> Học sinh và sinh viên có thể sử dụng máy tính khoa học để giải các bài toán phức tạp, kiểm tra kết quả, và hiểu rõ hơn về các khái niệm toán học.</p>
+                
+                <p><strong>Công việc và kinh doanh:</strong> Các chuyên gia sử dụng máy tính để tính toán tỷ suất lợi nhuận, phân tích dữ liệu bán hàng, và lập kế hoạch tài chính.</p>
+                
+                <p><strong>Sức khỏe và thể hình:</strong> Sử dụng máy tính BMI để theo dõi chỉ số khối cơ thể, hoặc tính toán lượng calo tiêu thụ khi tập luyện.</p>
+                
+                <h3>Tương Lai Của Máy Tính Online</h3>
+                <p>Công nghệ máy tính đang phát triển không ngừng và máy tính online cũng không ngoại lệ. Trong tương lai, chúng ta có thể kỳ vọng những cải tiến sau đây:</p>
+                
+                <ul>
+                    <li><strong>Trí tuệ nhân tạo (AI):</strong> Máy tính sẽ tích hợp AI để hiểu và giải quyết các vấn đề phức tạp hơn, thậm chí có thể gợi ý các phương pháp tính toán tối ưu.</li>
+                    <li><strong>Giao diện giọng nói:</strong> Người dùng có thể thực hiện các phép tính bằng giọng nói tự nhiên, giúp việc sử dụng máy tính trở nên tiện lợi hơn.</li>
+                    <li><strong>Thực tế tăng cường (AR):</strong> Máy tính có thể được tích hợp vào môi trường thực tế thông qua AR, cho phép người dùng thực hiện các phép tính trực tiếp trên các vật thể trong thế giới thực.</li>
+                    <li><strong>Tích hợp với các thiết bị IoT:</strong> Máy tính sẽ kết nối với các thiết bị thông minh khác trong nhà và nơi làm việc, tự động thực hiện các phép toán cần thiết.</li>
+                    <li><strong>Cá nhân hóa:</strong> Máy tính sẽ học thói quen sử dụng của từng người dùng và tùy chỉnh giao diện, chức năng để phù hợp nhất với nhu cầu cá nhân.</li>
+                    <li><strong>Tính toán đám mây nâng cao:</strong> Các phép tính phức tạp sẽ được thực hiện trên đám mây, cho phép máy tính online xử lý các tác vụ nặng mà không làm chậm thiết bị của người dùng.</li>
+                </ul>
+                
+                <h3>Kết Luận</h3>
+                <p>Máy tính online tại May-tinh.com không chỉ là một công cụ tính toán đơn thuần mà còn là một giải pháp toàn diện cho mọi nhu cầu tính toán của bạn. Với giao diện thân thiện, tính năng đa dạng, và khả năng truy cập từ mọi thiết bị, máy tính của chúng tôi là lựa chọn lý tưởng cho học sinh, sinh viên, chuyên gia và mọi người dùng.</p>
+                
+                <p>Chúng tôi cam kết liên tục cải tiến và phát triển sản phẩm để mang đến trải nghiệm tốt nhất cho người dùng. Hãy truy cập May-tinh.com ngay hôm nay để khám phá sức mạnh của máy tính online và trải nghiệm sự tiện lợi mà nó mang lại!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tính Năng Nổi Bật</h2>
+                <p>Máy tính online của chúng tôi có nhiều tính năng hữu ích cho mọi nhu cầu</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>Dễ Sử Dụng</h3>
+                    <p>Giao diện đơn giản, trực quan, phù hợp với mọi đối tượng người dùng</p>
+                    <a href="#">Tìm hiểu thêm <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Tương Thích Đa Thiết Bị</h3>
+                    <p>Hoạt động tốt trên máy tính, điện thoại và máy tính bảng</p>
+                    <a href="#">Tìm hiểu thêm <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Nhanh Chóng</h3>
+                    <p>Tính toán tức thì, không cần chờ đợi, tiết kiệm thời gian</p>
+                    <a href="#">Tìm hiểu thêm <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Bảo Mật</h3>
+                    <p>Toàn bộ dữ liệu tính toán được xử lý tại trình duyệt, không lưu trữ thông tin</p>
+                    <a href="#">Tìm hiểu thêm <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ad Section 2 -->
+    <section class="ad-section">
+        <div class="container">
+            <div class="ad-container">
+                <!-- AdSense Code Here -->
+                <p>Quảng cáo 728x90</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculators Section -->
+    <section class="calculators-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Các Loại Máy Tính Khác</h2>
+                <p>Chúng tôi cung cấp nhiều loại máy tính chuyên dụng cho mọi nhu cầu</p>
+            </div>
+            
+            <div class="calculators-grid">
+                <div class="calculator-card">
+                    <div class="calculator-card-img">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <div class="calculator-card-body">
+                        <h3>Máy Tính Tài Chính</h3>
+                        <p>Tính lãi suất, vay vốn, đầu tư, tiết kiệm và các công cụ tài chính khác</p>
+                        <a href="#">Sử dụng <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="calculator-card">
+                    <div class="calculator-card-img">
+                        <i class="fas fa-weight"></i>
+                    </div>
+                    <div class="calculator-card-body">
+                        <h3>Máy Tính BMI</h3>
+                        <p>Tính chỉ số khối cơ thể, đánh giá tình trạng sức khỏe</p>
+                        <a href="#">Sử dụng <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="calculator-card">
+                    <div class="calculator-card-img">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <div class="calculator-card-body">
+                        <h3>Máy Tính Chuyển Đổi</h3>
+                        <p>Chuyển đổi đơn vị đo lường, tiền tệ, nhiệt độ và nhiều hơn nữa</p>
+                        <a href="#">Sử dụng <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="calculator-card">
+                    <div class="calculator-card-img">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="calculator-card-body">
+                        <h3>Máy Tính Thống Kê</h3>
+                        <p>Tính toán các chỉ số thống kê như trung bình, phương sai, độ lệch chuẩn</p>
+                        <a href="#">Sử dụng <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog-section" id="blog">
+        <div class="container">
+            <div class="section-title">
+                <h2>Blog Máy Tính</h2>
+                <p>Các bài viết hữu ích về máy tính và toán học</p>
+            </div>
+            
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <div class="blog-img">
+                        Hình ảnh bài viết 1
+                    </div>
+                    <div class="blog-body">
+                        <div class="blog-date">15/10/2023</div>
+                        <h3 class="blog-title">Lịch Sử Phát Triển Của Máy Tính</h3>
+                        <p class="blog-excerpt">Khám phá hành trình phát triển ấn tượng của máy tính từ những công cụ cơ bản nhất đến các siêu máy tính hiện đại...</p>
+                        <a href="#" class="blog-link">Đọc thêm <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="blog-card">
+                    <div class="blog-img">
+                        Hình ảnh bài viết 2
+                    </div>
+                    <div class="blog-body">
+                        <div class="blog-date">10/10/2023</div>
+                        <h3 class="blog-title">Cách Sử Dụng Máy Tính Khoa Học Hiệu Quả</h3>
+                        <p class="blog-excerpt">Hướng dẫn chi tiết cách sử dụng các hàm trên máy tính khoa học để giải quyết các bài toán phức tạp...</p>
+                        <a href="#" class="blog-link">Đọc thêm <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="blog-card">
+                    <div class="blog-img">
+                        Hình ảnh bài viết 3
+                    </div>
+                    <div class="blog-body">
+                        <div class="blog-date">05/10/2023</div>
+                        <h3 class="blog-title">Ứng Dụng Của Máy Tính Trong Cuộc Sống Hàng Ngày</h3>
+                        <p class="blog-excerpt">Tìm hiểu cách máy tính giúp chúng ta giải quyết các vấn đề thực tế trong công việc, học tập và cuộc sống...</p>
+                        <a href="#" class="blog-link">Đọc thêm <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ad Section 3 -->
+    <section class="ad-section">
+        <div class="container">
+            <div class="ad-container">
+                <!-- AdSense Code Here -->
+                <p>Quảng cáo 728x90</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Câu Hỏi Thường Gặp</h2>
+                <p>Giải đáp các thắc mắc về máy tính online của chúng tôi</p>
+            </div>
+            
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Máy tính online có miễn phí không?
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Có, máy tính online tại May-tinh.com hoàn toàn miễn phí. Bạn không cần trả bất kỳ khoản phí nào để sử dụng tất cả các tính năng của máy tính của chúng tôi.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Tôi có thể sử dụng máy tính trên điện thoại không?
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Có, máy tính của chúng tôi được thiết kế để hoạt động tốt trên mọi thiết bị, bao gồm cả điện thoại thông minh và máy tính bảng. Giao diện sẽ tự động điều chỉnh để phù hợp với kích thước màn hình của bạn.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Máy tính có lưu trữ dữ liệu của tôi không?
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Không, máy tính của chúng tôi không lưu trữ bất kỳ dữ liệu nào của bạn. Tất cả các phép tính được thực hiện trực tiếp trên trình duyệt của bạn và không được gửi đến máy chủ của chúng tôi.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            Làm thế nào để chuyển giữa các loại máy tính khác nhau?
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Bạn có thể dễ dàng chuyển đổi giữa các loại máy tính bằng cách nhấp vào các tab ở trên cùng của máy tính: "Cơ Bản", "Khoa Học", và "Lập Trình". Mỗi tab sẽ hiển thị các chức năng tương ứng với loại máy tính đó.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFive">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            Tôi có thể sử dụng bàn phím để nhập số không?
+                        </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Có, bạn có thể sử dụng bàn phím để nhập số và các phép toán cơ bản. Các phím số, phép toán (+, -, *, /), và Enter (để tính kết quả) đều được hỗ trợ. Tuy nhiên, một số hàm đặc biệt có thể cần sử dụng chuột.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Về Chúng Tôi</h2>
+                <p>Giới thiệu về May-tinh.com và sứ mệnh của chúng tôi</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>May-tinh.com - Nền Tảng Máy Tính Online Hàng Đầu Việt Nam</h3>
+                    <p>May-tinh.com được thành lập với sứ mệnh mang đến cho người Việt Nam một công cụ tính toán trực tuyến miễn phí, chính xác và dễ sử dụng. Chúng tôi hiểu rằng trong cuộc sống hiện đại, việc có một máy tính đáng tin cậy là rất quan trọng cho công việc, học tập và cuộc sống hàng ngày.</p>
+                    
+                    <p>Đội ngũ của chúng tôi bao gồm các chuyên gia công nghệ, toán học và thiết kế giao diện người dùng, cùng làm việc để tạo ra một sản phẩm không chỉ chức năng mà còn thân thiện với người dùng. Chúng tôi liên tục cập nhật và cải tiến sản phẩm để đáp ứng nhu cầu ngày càng cao của người dùng.</p>
+                    
+                    <p>Ngoài máy tính cơ bản, chúng tôi còn phát triển các loại máy tính chuyên dụng như máy tính khoa học, máy tính tài chính, máy tính BMI, và nhiều công cụ khác để phục vụ mọi nhu cầu tính toán của bạn.</p>
+                    
+                    <p>Chúng tôi cam kết cung cấp dịch vụ miễn phí và không bao giờ thu thập thông tin cá nhân của người dùng. Tất cả các phép tính được thực hiện trực tiếp trên trình duyệt của bạn, đảm bảo tính riêng tư và bảo mật.</p>
+                </div>
+                
+                <div class="about-img">
+                    Hình ảnh về chúng tôi
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Về Máy Tính</h3>
+                    <p>May-tinh.com cung cấp các công cụ tính toán trực tuyến miễn phí, chính xác và dễ sử dụng cho mọi người Việt Nam.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Liên Kết Nhanh</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Trang Chủ</a></li>
+                        <li><a href="#calculators">Máy Tính</a></li>
+                        <li><a href="#features">Tính Năng</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#about">Về Chúng Tôi</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Loại Máy Tính</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Máy Tính Cơ Bản</a></li>
+                        <li><a href="#">Máy Tính Khoa Học</a></li>
+                        <li><a href="#">Máy Tính Lập Trình</a></li>
+                        <li><a href="#">Máy Tính Tài Chính</a></li>
+                        <li><a href="#">Máy Tính BMI</a></li>
+                        <li><a href="#">Máy Tính Chuyển Đổi</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Liên Hệ</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> Hà Nội, Việt Nam</li>
+                        <li><i class="fas fa-phone"></i> +84 123 456 789</li>
+                        <li><i class="fas fa-envelope"></i> info@may-tinh.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 May-tinh.com. Tất cả quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Calculator JavaScript -->
+    <script>
+        // Global variables
+        let expression = document.getElementById('expression');
+        let result = document.getElementById('result');
+        let currentInput = '';
+        let memory = 0;
+        let autoCalculate = false;
+        let lastResult = '0';
+        let angleMode = 'deg'; // Default to degrees for trigonometric functions
+        let openParentheses = 0; // Track open parentheses
+        let lastWasFunction = false; // Track if last input was a function
+        let calculationHistory = []; // Store calculation history
+        
+        // Initialize calculator
+        function initCalculator() {
+            // Set up event listeners for all buttons
+            document.querySelectorAll('.calc-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    // Visual feedback
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 100);
+                });
+            });
+        }
+        
+        // Update display
+        function updateDisplay() {
+            expression.textContent = currentInput;
+            result.textContent = lastResult;
+        }
+        
+        // Append to display
+        function appendToDisplay(value) {
+            // If we're starting a new calculation after pressing equals
+            if (currentInput === '' && !isNaN(value)) {
+                currentInput = value;
+                lastWasFunction = false;
+            } else {
+                // Check if last input was a function and current input is a digit
+                if (lastWasFunction && !isNaN(value)) {
+                    // Insert the digit before the closing parenthesis
+                    currentInput = currentInput.slice(0, -1) + value + ')';
+                } else {
+                    currentInput += value;
+                }
+                lastWasFunction = false;
+            }
+            
+            // Track parentheses
+            if (value === '(') {
+                openParentheses++;
+            } else if (value === ')') {
+                openParentheses--;
+            }
+            
+            updateDisplay();
+        }
+        
+        // Append function
+        function appendFunction(func, event) {
+            event.preventDefault();
+            
+            // Check if we need to add a multiplication sign
+            if (currentInput !== '' && !isNaN(currentInput.slice(-1))) {
+                currentInput += '*';
+            }
+            
+            // Add the function with parentheses
+            currentInput += func + '(';
+            
+            // Track the open parenthesis and that last input was a function
+            openParentheses++;
+            lastWasFunction = true;
+            
+            // Update display immediately
+            updateDisplay();
+        }
+        
+        // Clear display
+        function clearDisplay() {
+            currentInput = '';
+            result.textContent = '0';
+            lastResult = '0';
+            openParentheses = 0;
+            lastWasFunction = false;
+            updateDisplay();
+        }
+        
+        // Backspace
+        function backspace() {
+            if (currentInput.length > 0) {
+                // Remove one character at a time
+                currentInput = currentInput.slice(0, -1);
+                
+                // Update parentheses count
+                updateParenthesesCount();
+                
+                // Update display
+                updateDisplay();
+            }
+        }
+        
+        // Update parentheses count
+        function updateParenthesesCount() {
+            openParentheses = 0;
+            for (let i = 0; i < currentInput.length; i++) {
+                if (currentInput[i] === '(') {
+                    openParentheses++;
+                } else if (currentInput[i] === ')') {
+                    openParentheses--;
+                }
+            }
+        }
+        
+        // Toggle sign
+        function toggleSign() {
+            if (currentInput !== '') {
+                // Check if the expression ends with a number
+                if (!isNaN(currentInput.slice(-1))) {
+                    // Find the start of the last number
+                    let i = currentInput.length - 1;
+                    while (i >= 0 && (!isNaN(currentInput[i]) || currentInput[i] === '.')) {
+                        i--;
+                    }
+                    
+                    // Get the last number
+                    let lastNumber = currentInput.slice(i + 1);
+                    
+                    // Toggle the sign
+                    if (lastNumber.startsWith('-')) {
+                        lastNumber = lastNumber.substring(1);
+                    } else {
+                        lastNumber = '-' + lastNumber;
+                    }
+                    
+                    // Update the expression
+                    currentInput = currentInput.slice(0, i + 1) + lastNumber;
+                    
+                    // Update display
+                    updateDisplay();
+                }
+            }
+        }
+        
+        // Calculate
+        function calculate() {
+            // Auto-close any open parentheses
+            while (openParentheses > 0) {
+                currentInput += ')';
+                openParentheses--;
+            }
+            
+            try {
+                // Replace display symbols with JavaScript operators
+                let expr = currentInput.replace(/×/g, '*').replace(/÷/g, '/').replace(/−/g, '-').replace(/\^/g, '**');
+                
+                // Handle trigonometric functions with angle mode conversion
+                if (angleMode === 'deg') {
+                    // Convert degrees to radians for JavaScript Math functions
+                    expr = expr.replace(/sin\(/g, 'Math.sin(Math.PI/180*');
+                    expr = expr.replace(/cos\(/g, 'Math.cos(Math.PI/180*');
+                    expr = expr.replace(/tan\(/g, 'Math.tan(Math.PI/180*');
+                    
+                    // Handle inverse trigonometric functions
+                    expr = expr.replace(/asin\(/g, '(180/Math.PI)*Math.asin(');
+                    expr = expr.replace(/acos\(/g, '(180/Math.PI)*Math.acos(');
+                    expr = expr.replace(/atan\(/g, '(180/Math.PI)*Math.atan(');
+                } else if (angleMode === 'grad') {
+                    // Convert gradians to radians for JavaScript Math functions
+                    expr = expr.replace(/sin\(/g, 'Math.sin(Math.PI/200*');
+                    expr = expr.replace(/cos\(/g, 'Math.cos(Math.PI/200*');
+                    expr = expr.replace(/tan\(/g, 'Math.tan(Math.PI/200*');
+                    
+                    // Handle inverse trigonometric functions
+                    expr = expr.replace(/asin\(/g, '(200/Math.PI)*Math.asin(');
+                    expr = expr.replace(/acos\(/g, '(200/Math.PI)*Math.acos(');
+                    expr = expr.replace(/atan\(/g, '(200/Math.PI)*Math.atan(');
+                } else {
+                    // Radians mode (default for JavaScript)
+                    expr = expr.replace(/sin\(/g, 'Math.sin(');
+                    expr = expr.replace(/cos\(/g, 'Math.cos(');
+                    expr = expr.replace(/tan\(/g, 'Math.tan(');
+                    expr = expr.replace(/asin\(/g, 'Math.asin(');
+                    expr = expr.replace(/acos\(/g, 'Math.acos(');
+                    expr = expr.replace(/atan\(/g, 'Math.atan(');
+                }
+                
+                // Replace other function names with Math equivalents
+                expr = expr.replace(/log\(/g, 'Math.log10(');
+                expr = expr.replace(/ln\(/g, 'Math.log(');
+                expr = expr.replace(/sqrt\(/g, 'Math.sqrt(');
+                expr = expr.replace(/exp\(/g, 'Math.exp(');
+                expr = expr.replace(/abs\(/g, 'Math.abs(');
+                
+                // Replace constants
+                expr = expr.replace(/π/g, 'Math.PI');
+                expr = expr.replace(/e(?![a-z])/g, 'Math.E');
+                
+                // Evaluate the expression
+                let res = eval(expr);
+                
+                // Format the result
+                if (typeof res === 'number') {
+                    if (res === Infinity || res === -Infinity) {
+                        result.textContent = 'Vô cực';
+                    } else if (isNaN(res)) {
+                        result.textContent = 'Không phải số';
+                    } else {
+                        // Limit decimal places
+                        res = Math.round(res * 100000000) / 100000000;
+                        result.textContent = res;
+                    }
+                } else {
+                    result.textContent = res;
+                }
+                
+                lastResult = result.textContent;
+                
+                // Add to history
+                addToHistory(currentInput, result.textContent);
+            } catch (error) {
+                result.textContent = 'Lỗi';
+                lastResult = '0';
+            }
+            
+            // Reset parentheses count and function flag
+            openParentheses = 0;
+            lastWasFunction = false;
+        }
+        
+        // Factorial
+        function factorial(event) {
+            event.preventDefault();
+            
+            try {
+                let num = parseInt(currentInput);
+                if (num < 0) {
+                    result.textContent = 'Lỗi';
+                } else if (num === 0 || num === 1) {
+                    currentInput = '1';
+                } else {
+                    let res = 1;
+                    for (let i = 2; i <= num; i++) {
+                        res *= i;
+                    }
+                    currentInput = res.toString();
+                }
+                updateDisplay();
+            } catch (error) {
+                result.textContent = 'Lỗi';
+                updateDisplay();
+            }
+        }
+        
+        // Memory functions
+        function memoryAdd(event) {
+            event.preventDefault();
+            try {
+                memory += parseFloat(result.textContent);
+            } catch (error) {
+                // Ignore error
+            }
+        }
+        
+        function memorySubtract(event) {
+            event.preventDefault();
+            try {
+                memory -= parseFloat(result.textContent);
+            } catch (error) {
+                // Ignore error
+            }
+        }
+        
+        function memoryRecall(event) {
+            event.preventDefault();
+            currentInput = memory.toString();
+            updateDisplay();
+        }
+        
+        function memoryClear(event) {
+            event.preventDefault();
+            memory = 0;
+        }
+        
+        // Conversion functions
+        function convertToHex(event) {
+            event.preventDefault();
+            try {
+                let num = parseInt(currentInput);
+                if (!isNaN(num)) {
+                    currentInput = num.toString(16).toUpperCase();
+                    updateDisplay();
+                }
+            } catch (error) {
+                // Ignore error
+            }
+        }
+        
+        function convertToDec(event) {
+            event.preventDefault();
+            try {
+                let num = parseInt(currentInput, 16);
+                if (!isNaN(num)) {
+                    currentInput = num.toString();
+                    updateDisplay();
+                }
+            } catch (error) {
+                // Ignore error
+            }
+        }
+        
+        function convertToOct(event) {
+            event.preventDefault();
+            try {
+                let num = parseInt(currentInput);
+                if (!isNaN(num)) {
+                    currentInput = num.toString(8);
+                    updateDisplay();
+                }
+            } catch (error) {
+                // Ignore error
+            }
+        }
+        
+        function convertToBin(event) {
+            event.preventDefault();
+            try {
+                let num = parseInt(currentInput);
+                if (!isNaN(num)) {
+                    currentInput = num.toString(2);
+                    updateDisplay();
+                }
+            } catch (error) {
+                // Ignore error
+            }
+        }
+        
+        // Switch calculator
+        function switchCalculator(type, event) {
+            event.preventDefault();
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.calculator-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Hide all button sets
+            document.getElementById('basic-buttons').style.display = 'none';
+            document.getElementById('scientific-buttons').style.display = 'none';
+            document.getElementById('programmer-buttons').style.display = 'none';
+            document.getElementById('angle-mode').classList.remove('active');
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+            
+            // Show corresponding button set
+            if (type === 'basic') {
+                document.getElementById('basic-buttons').style.display = 'grid';
+            } else if (type === 'scientific') {
+                document.getElementById('scientific-buttons').style.display = 'grid';
+                document.getElementById('angle-mode').classList.add('active');
+            } else if (type === 'programmer') {
+                document.getElementById('programmer-buttons').style.display = 'grid';
+            }
+            
+            // Reset display
+            clearDisplay();
+        }
+        
+        // Set angle mode
+        function setAngleMode(mode, event) {
+            event.preventDefault();
+            
+            // Remove active class from all angle mode buttons
+            document.querySelectorAll('#angle-mode button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+            
+            // Set angle mode
+            angleMode = mode;
+        }
+        
+        // History functions
+        function addToHistory(expr, res) {
+            calculationHistory.unshift({
+                expression: expr,
+                result: res
+            });
+            
+            // Limit history to 50 items
+            if (calculationHistory.length > 50) {
+                calculationHistory.pop();
+            }
+            
+            updateHistoryDisplay();
+        }
+        
+        function updateHistoryDisplay() {
+            const historyList = document.getElementById('history-list');
+            historyList.innerHTML = '';
+            
+            calculationHistory.forEach(item => {
+                const historyItem = document.createElement('div');
+                historyItem.className = 'history-item';
+                historyItem.onclick = () => useHistoryItem(item);
+                
+                historyItem.innerHTML = `
+                    <div class="history-expression">${item.expression}</div>
+                    <div class="history-result">${item.result}</div>
+                `;
+                
+                historyList.appendChild(historyItem);
+            });
+        }
+        
+        function useHistoryItem(item) {
+            currentInput = item.expression;
+            result.textContent = item.result;
+            lastResult = item.result;
+            updateDisplay();
+            toggleHistory();
+        }
+        
+        function toggleHistory() {
+            const historyPanel = document.getElementById('history-panel');
+            historyPanel.classList.toggle('active');
+        }
+        
+        function clearHistory() {
+            calculationHistory = [];
+            updateHistoryDisplay();
+        }
+        
+        // Keyboard support
+        document.addEventListener('keydown', function(event) {
+            const key = event.key;
+            
+            if (key >= '0' && key <= '9') {
+                appendToDisplay(key);
+            } else if (key === '.') {
+                appendToDisplay('.');
+            } else if (key === '+' || key === '-') {
+                appendToDisplay(key);
+            } else if (key === '*') {
+                appendToDisplay('*');
+            } else if (key === '/') {
+                event.preventDefault();
+                appendToDisplay('/');
+            } else if (key === 'Enter' || key === '=') {
+                calculate();
+            } else if (key === 'Escape' || key === 'c' || key === 'C') {
+                clearDisplay();
+            } else if (key === 'Backspace') {
+                backspace();
+            }
+        });
+        
+        // Ad refresh functionality
+        function refreshAds() {
+            // This function would refresh ads on the page
+            // In a real implementation, you would use the AdSense API or your ad network's specific code
+            console.log('Refreshing ads...');
+            
+            // For demonstration, we'll just update the ad placeholder text
+            document.querySelectorAll('.ad-container').forEach(ad => {
+                ad.innerHTML = '<p>Quảng cáo đã làm mới - ' + new Date().toLocaleTimeString() + '</p>';
+            });
+        }
+        
+        // Initialize calculator when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initCalculator();
+            updateDisplay();
+        });
+        
+        // Refresh ads every 60 seconds
+        setInterval(refreshAds, 60000);
+    </script>
+    
+    <!-- Schema Markup for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Máy Tính Online - May-tinh.com",
+        "url": "https://may-tinh.com",
+        "description": "Máy tính online miễn phí với nhiều chức năng: máy tính cơ bản, khoa học, tài chính, BMI, chuyển đổi đơn vị. Dễ sử dụng, chính xác, hỗ trợ mọi thiết bị.",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://may-tinh.com/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        },
+        "inLanguage": "vi"
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "May-tinh.com",
+        "url": "https://may-tinh.com",
+        "logo": "https://may-tinh.com/images/logo.png",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+84-123-456-789",
+            "contactType": "customer service",
+            "availableLanguage": "Vietnamese"
+        },
+        "sameAs": [
+            "https://www.facebook.com/maytinhcom",
+            "https://twitter.com/maytinhcom",
+            "https://www.instagram.com/maytinhcom"
+        ]
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Máy Tính Online",
+        "operatingSystem": "Web",
+        "applicationCategory": "CalculatorApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "VND"
+        },
+        "creator": {
+            "@type": "Organization",
+            "name": "May-tinh.com"
+        }
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Máy tính online có miễn phí không?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Có, máy tính online tại May-tinh.com hoàn toàn miễn phí. Bạn không cần trả bất kỳ khoản phí nào để sử dụng tất cả các tính năng của máy tính của chúng tôi."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Tôi có thể sử dụng máy tính trên điện thoại không?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Có, máy tính của chúng tôi được thiết kế để hoạt động tốt trên mọi thiết bị, bao gồm cả điện thoại thông minh và máy tính bảng. Giao diện sẽ tự động điều chỉnh để phù hợp với kích thước màn hình của bạn."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Máy tính có lưu trữ dữ liệu của tôi không?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Không, máy tính của chúng tôi không lưu trữ bất kỳ dữ liệu nào của bạn. Tất cả các phép tính được thực hiện trực tiếp trên trình duyệt của bạn và không được gửi đến máy chủ của chúng tôi."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Làm thế nào để chuyển giữa các loại máy tính khác nhau?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Bạn có thể dễ dàng chuyển đổi giữa các loại máy tính bằng cách nhấp vào các tab ở trên cùng của máy tính: 'Cơ Bản', 'Khoa Học', và 'Lập Trình'. Mỗi tab sẽ hiển thị các chức năng tương ứng với loại máy tính đó."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Tôi có thể sử dụng bàn phím để nhập số không?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Có, bạn có thể sử dụng bàn phím để nhập số và các phép toán cơ bản. Các phím số, phép toán (+, -, *, /), và Enter (để tính kết quả) đều được hỗ trợ. Tuy nhiên, một số hàm đặc biệt có thể cần sử dụng chuột."
+                }
+            }
+        ]
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Lịch Sử Phát Triển Của Máy Tính",
+        "image": "https://may-tinh.com/images/blog1.jpg",
+        "author": {
+            "@type": "Person",
+            "name": "May-tinh.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "May-tinh.com",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://may-tinh.com/images/logo.png"
+            }
+        },
+        "datePublished": "2023-10-15",
+        "dateModified": "2023-10-15"
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Cách Sử Dụng Máy Tính Khoa Học Hiệu Quả",
+        "image": "https://may-tinh.com/images/blog2.jpg",
+        "author": {
+            "@type": "Person",
+            "name": "May-tinh.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "May-tinh.com",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://may-tinh.com/images/logo.png"
+            }
+        },
+        "datePublished": "2023-10-10",
+        "dateModified": "2023-10-10"
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Ứng Dụng Của Máy Tính Trong Cuộc Sống Hàng Ngày",
+        "image": "https://may-tinh.com/images/blog3.jpg",
+        "author": {
+            "@type": "Person",
+            "name": "May-tinh.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "May-tinh.com",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://may-tinh.com/images/logo.png"
+            }
+        },
+        "datePublished": "2023-10-05",
+        "dateModified": "2023-10-05"
+    }
+    </script>
+</body>
+</html>
