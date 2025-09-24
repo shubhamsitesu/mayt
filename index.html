@@ -188,7 +188,7 @@
         }
         
         .calculator-container {
-            max-width: 500px;
+            max-width: 350px;
             margin: 0 auto;
             background-color: var(--white);
             border-radius: 8px;
@@ -223,9 +223,9 @@
         
         .calculator-display {
             background-color: var(--white);
-            padding: 20px;
+            padding: 15px;
             text-align: right;
-            min-height: 100px;
+            min-height: 70px;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
@@ -234,17 +234,17 @@
         }
         
         .calculator-expression {
-            font-size: 16px;
+            font-size: 14px;
             color: var(--gray-color);
-            min-height: 24px;
-            margin-bottom: 8px;
+            min-height: 20px;
+            margin-bottom: 5px;
         }
         
         .calculator-result {
-            font-size: 36px;
+            font-size: 24px;
             color: var(--dark-color);
             font-weight: 400;
-            min-height: 48px;
+            min-height: 30px;
             word-wrap: break-word;
             overflow-wrap: break-word;
         }
@@ -252,7 +252,7 @@
         .history-btn {
             position: absolute;
             top: 15px;
-            right: 15px;
+            left: 15px;
             background: none;
             border: none;
             font-size: 18px;
@@ -263,19 +263,19 @@
         .history-panel {
             position: fixed;
             top: 0;
-            right: -350px;
+            left: -350px;
             width: 350px;
             height: 100%;
             background-color: var(--white);
-            box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
             z-index: 1001;
-            transition: right 0.3s ease;
+            transition: left 0.3s ease;
             display: flex;
             flex-direction: column;
         }
         
         .history-panel.active {
-            right: 0;
+            left: 0;
         }
         
         .history-header {
@@ -345,26 +345,25 @@
         .calculator-buttons {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-            background-color: var(--white);
-            padding: 12px;
+            grid-template-rows: repeat(5, auto);
+            gap: 1px;
+            background-color: var(--light-gray);
         }
         
         .calc-btn {
             background-color: var(--button-bg);
             border: none;
-            padding: 28px 0;
-            font-size: 20px;
+            padding: 20px 0;
+            font-size: 18px;
             cursor: pointer;
             transition: background-color 0.2s;
             font-weight: 400;
             color: var(--dark-color);
-            border-radius: 50%;
+            border-radius: 0;
             user-select: none;
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         
         .calc-btn:hover {
@@ -372,8 +371,7 @@
         }
         
         .calc-btn:active {
-            transform: scale(0.95);
-            box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+            transform: scale(0.98);
         }
         
         .calc-btn.operator {
@@ -390,8 +388,6 @@
             background-color: var(--equals-bg);
             color: var(--white);
             font-weight: 500;
-            grid-column: span 2;
-            border-radius: 25px;
         }
         
         .calc-btn.equals:hover {
@@ -412,7 +408,7 @@
             background-color: var(--function-bg);
             color: var(--primary-color);
             font-weight: 500;
-            font-size: 16px;
+            font-size: 14px;
         }
         
         .calc-btn.function:hover {
@@ -422,17 +418,16 @@
         .calc-btn.zero {
             grid-column: span 2;
             text-align: left;
-            padding-left: 28px;
-            border-radius: 25px;
+            padding-left: 20px;
         }
         
         /* Scientific Calculator */
         .scientific-buttons {
             display: none;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 8px;
-            background-color: var(--white);
-            padding: 8px;
+            grid-template-columns: repeat(6, 1fr);
+            grid-template-rows: repeat(7, auto);
+            gap: 1px;
+            background-color: var(--light-gray);
         }
         
         .scientific-buttons.active {
@@ -440,42 +435,38 @@
         }
         
         .scientific-buttons .calc-btn {
-            padding: 20px 0;
-            font-size: 16px;
-            border-radius: 50%;
+            padding: 15px 0;
+            font-size: 12px;
         }
         
         .scientific-buttons .calc-btn.zero {
             grid-column: span 1;
             text-align: center;
             padding-left: 0;
-            border-radius: 50%;
         }
         
-        /* Programmer Calculator */
-        .programmer-buttons {
+        /* Calculus Calculator */
+        .calculus-buttons {
             display: none;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 8px;
-            background-color: var(--white);
-            padding: 8px;
+            grid-template-columns: repeat(6, 1fr);
+            grid-template-rows: repeat(7, auto);
+            gap: 1px;
+            background-color: var(--light-gray);
         }
         
-        .programmer-buttons.active {
+        .calculus-buttons.active {
             display: grid;
         }
         
-        .programmer-buttons .calc-btn {
-            padding: 20px 0;
-            font-size: 16px;
-            border-radius: 50%;
+        .calculus-buttons .calc-btn {
+            padding: 15px 0;
+            font-size: 12px;
         }
         
-        .programmer-buttons .calc-btn.zero {
+        .calculus-buttons .calc-btn.zero {
             grid-column: span 1;
             text-align: center;
             padding-left: 0;
-            border-radius: 50%;
         }
         
         /* Angle Mode Toggle */
@@ -954,51 +945,51 @@
             }
             
             .calc-btn {
-                padding: 22px 0;
-                font-size: 18px;
+                padding: 18px 0;
+                font-size: 16px;
+            }
+            
+            .calculator-container {
+                max-width: 320px;
             }
         }
         
         @media (max-width: 576px) {
             .calculator-result {
-                font-size: 28px;
+                font-size: 20px;
             }
             
             .calc-btn {
-                padding: 20px 0;
-                font-size: 16px;
+                padding: 15px 0;
+                font-size: 14px;
             }
             
             .calculator-buttons {
                 grid-template-columns: repeat(4, 1fr);
-                gap: 8px;
-                padding: 8px;
             }
             
             .scientific-buttons {
-                grid-template-columns: repeat(4, 1fr);
+                grid-template-columns: repeat(6, 1fr);
             }
             
-            .programmer-buttons {
-                grid-template-columns: repeat(4, 1fr);
+            .calculus-buttons {
+                grid-template-columns: repeat(6, 1fr);
             }
             
             .calc-btn.zero {
                 grid-column: span 2;
-                text-align: left;
-                padding-left: 20px;
             }
             
             .scientific-buttons .calc-btn.zero {
                 grid-column: span 1;
-                text-align: center;
-                padding-left: 0;
             }
             
-            .programmer-buttons .calc-btn.zero {
+            .calculus-buttons .calc-btn.zero {
                 grid-column: span 1;
-                text-align: center;
-                padding-left: 0;
+            }
+            
+            .calculator-container {
+                max-width: 300px;
             }
         }
     </style>
@@ -1048,7 +1039,7 @@
                 <div class="calculator-tabs">
                     <button class="calculator-tab active" onclick="switchCalculator('basic', event)">Cơ Bản</button>
                     <button class="calculator-tab" onclick="switchCalculator('scientific', event)">Khoa Học</button>
-                    <button class="calculator-tab" onclick="switchCalculator('programmer', event)">Lập Trình</button>
+                    <button class="calculator-tab" onclick="switchCalculator('calculus', event)">Giải Tích</button>
                 </div>
                 
                 <div class="angle-mode" id="angle-mode">
@@ -1058,11 +1049,11 @@
                 </div>
                 
                 <div class="calculator-display">
-                    <div class="calculator-expression" id="expression"></div>
-                    <div class="calculator-result" id="result">0</div>
                     <button class="history-btn" onclick="toggleHistory()">
                         <i class="fas fa-history"></i>
                     </button>
+                    <div class="calculator-expression" id="expression"></div>
+                    <div class="calculator-result" id="result">0</div>
                 </div>
                 
                 <div class="calculator-buttons" id="basic-buttons">
@@ -1097,98 +1088,95 @@
                     <button class="calc-btn function" onclick="appendFunction('tan', event)">tan</button>
                     <button class="calc-btn function" onclick="appendFunction('log', event)">log</button>
                     <button class="calc-btn function" onclick="appendFunction('ln', event)">ln</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('^')">xʸ</button>
                     
                     <button class="calc-btn function" onclick="appendFunction('asin', event)">sin⁻¹</button>
                     <button class="calc-btn function" onclick="appendFunction('acos', event)">cos⁻¹</button>
                     <button class="calc-btn function" onclick="appendFunction('atan', event)">tan⁻¹</button>
                     <button class="calc-btn function" onclick="appendFunction('sqrt', event)">√</button>
-                    <button class="calc-btn function" onclick="appendToDisplay('^')">xʸ</button>
-                    
-                    <button class="calc-btn function" onclick="factorial(event)">x!</button>
-                    <button class="calc-btn function" onclick="appendFunction('abs', event)">|x|</button>
                     <button class="calc-btn function" onclick="appendToDisplay('π')">π</button>
-                    <button class="calc-btn function" onclick="appendToDisplay('e')">e</button>
-                    <button class="calc-btn function" onclick="appendFunction('exp', event)">eˣ</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('!')">!</button>
                     
-                    <button class="calc-btn clear" onclick="clearDisplay()">AC</button>
+                    <button class="calc-btn function" onclick="appendFunction('sinh', event)">sinh</button>
+                    <button class="calc-btn function" onclick="appendFunction('cosh', event)">cosh</button>
+                    <button class="calc-btn function" onclick="appendFunction('tanh', event)">tanh</button>
                     <button class="calc-btn operator" onclick="appendToDisplay('(')">(</button>
                     <button class="calc-btn operator" onclick="appendToDisplay(')')">)</button>
-                    <button class="calc-btn operator" onclick="appendToDisplay('/')">÷</button>
-                    <button class="calc-btn operator" onclick="appendToDisplay('%')">%</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay(',')">,</button>
                     
-                    <button class="calc-btn" onclick="appendToDisplay('7')">7</button>
-                    <button class="calc-btn" onclick="appendToDisplay('8')">8</button>
-                    <button class="calc-btn" onclick="appendToDisplay('9')">9</button>
-                    <button class="calc-btn operator" onclick="appendToDisplay('*')">×</button>
+                    <button class="calc-btn clear" onclick="clearDisplay()">AC</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('7')">7</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('8')">8</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('9')">9</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('/')">÷</button>
                     <button class="calc-btn operator" onclick="memoryRecall(event)">MR</button>
                     
-                    <button class="calc-btn" onclick="appendToDisplay('4')">4</button>
-                    <button class="calc-btn" onclick="appendToDisplay('5')">5</button>
-                    <button class="calc-btn" onclick="appendToDisplay('6')">6</button>
-                    <button class="calc-btn operator" onclick="appendToDisplay('-')">−</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('4')">4</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('5')">5</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('6')">6</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('*')">×</button>
                     <button class="calc-btn operator" onclick="memoryClear(event)">MC</button>
                     
-                    <button class="calc-btn" onclick="appendToDisplay('1')">1</button>
-                    <button class="calc-btn" onclick="appendToDisplay('2')">2</button>
-                    <button class="calc-btn" onclick="appendToDisplay('3')">3</button>
-                    <button class="calc-btn operator" onclick="appendToDisplay('+')">+</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('1')">1</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('2')">2</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('3')">3</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('-')">−</button>
                     <button class="calc-btn operator" onclick="memoryAdd(event)">M+</button>
                     
-                    <button class="calc-btn zero" onclick="appendToDisplay('0')">0</button>
-                    <button class="calc-btn" onclick="appendToDisplay('.')">.</button>
-                    <button class="calc-btn" onclick="backspace()">⌫</button>
-                    <button class="calc-btn equals" onclick="calculate()">=</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('0')">0</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('.')">.</button>
+                    <button class="calc-btn operator" onclick="backspace()">⌫</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('+')">+</button>
                     <button class="calc-btn operator" onclick="memorySubtract(event)">M-</button>
                 </div>
                 
-                <div class="programmer-buttons" id="programmer-buttons">
-                    <button class="calc-btn function" onclick="convertToHex(event)">HEX</button>
-                    <button class="calc-btn function" onclick="convertToDec(event)">DEC</button>
-                    <button class="calc-btn function" onclick="convertToOct(event)">OCT</button>
-                    <button class="calc-btn function" onclick="convertToBin(event)">BIN</button>
-                    <button class="calc-btn function" onclick="appendToDisplay('π')">π</button>
+                <!-- Calculus Buttons -->
+                <div class="calculus-buttons" id="calculus-buttons">
+                    <button class="calc-btn function" onclick="appendFunction('integral', event)">∫</button>
+                    <button class="calc-btn function" onclick="appendFunction('derivative', event)">d/dx</button>
+                    <button class="calc-btn function" onclick="appendFunction('limit', event)">lim</button>
+                    <button class="calc-btn function" onclick="appendFunction('sum', event)">∑</button>
+                    <button class="calc-btn function" onclick="appendFunction('product', event)">∏</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('^')">xʸ</button>
                     
-                    <button class="calc-btn function" onclick="appendToDisplay('0b')">0b</button>
-                    <button class="calc-btn function" onclick="appendToDisplay('0o')">0o</button>
-                    <button class="calc-btn function" onclick="appendToDisplay('0x')">0x</button>
-                    <button class="calc-btn operator" onclick="appendToDisplay('<<')">≪</button>
-                    <button class="calc-btn operator" onclick="appendToDisplay('>>')">≫</button>
-                    
-                    <button class="calc-btn operator" onclick="appendToDisplay('&')">&amp;</button>
-                    <button class="calc-btn operator" onclick="appendToDisplay('|')">|</button>
-                    <button class="calc-btn operator" onclick="appendToDisplay('^')">⊕</button>
-                    <button class="calc-btn operator" onclick="appendToDisplay('~')">~</button>
+                    <button class="calc-btn function" onclick="appendFunction('sin', event)">sin</button>
+                    <button class="calc-btn function" onclick="appendFunction('cos', event)">cos</button>
+                    <button class="calc-btn function" onclick="appendFunction('tan', event)">tan</button>
+                    <button class="calc-btn function" onclick="appendFunction('log', event)">log</button>
+                    <button class="calc-btn function" onclick="appendFunction('ln', event)">ln</button>
                     <button class="calc-btn operator" onclick="appendToDisplay('!')">!</button>
+                    
+                    <button class="calc-btn function" onclick="appendFunction('asin', event)">sin⁻¹</button>
+                    <button class="calc-btn function" onclick="appendFunction('acos', event)">cos⁻¹</button>
+                    <button class="calc-btn function" onclick="appendFunction('atan', event)">tan⁻¹</button>
+                    <button class="calc-btn function" onclick="appendFunction('sqrt', event)">√</button>
+                    <button class="calc-btn function" onclick="appendToDisplay('π')">π</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay(',')">,</button>
                     
                     <button class="calc-btn clear" onclick="clearDisplay()">AC</button>
-                    <button class="calc-btn operator" onclick="appendToDisplay('(')">(</button>
-                    <button class="calc-btn operator" onclick="appendToDisplay(')')">)</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('7')">7</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('8')">8</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('9')">9</button>
                     <button class="calc-btn operator" onclick="appendToDisplay('/')">÷</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('(')">(</button>
+                    
+                    <button class="calc-btn operator" onclick="appendToDisplay('4')">4</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('5')">5</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('6')">6</button>
                     <button class="calc-btn operator" onclick="appendToDisplay('*')">×</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay(')')">)</button>
                     
-                    <button class="calc-btn" onclick="appendToDisplay('7')">7</button>
-                    <button class="calc-btn" onclick="appendToDisplay('8')">8</button>
-                    <button class="calc-btn" onclick="appendToDisplay('9')">9</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('1')">1</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('2')">2</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('3')">3</button>
                     <button class="calc-btn operator" onclick="appendToDisplay('-')">−</button>
-                    <button class="calc-btn operator" onclick="appendToDisplay('%')">%</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('e')">e</button>
                     
-                    <button class="calc-btn" onclick="appendToDisplay('4')">4</button>
-                    <button class="calc-btn" onclick="appendToDisplay('5')">5</button>
-                    <button class="calc-btn" onclick="appendToDisplay('6')">6</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('0')">0</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('.')">.</button>
+                    <button class="calc-btn operator" onclick="backspace()">⌫</button>
                     <button class="calc-btn operator" onclick="appendToDisplay('+')">+</button>
-                    <button class="calc-btn operator" onclick="appendToDisplay('&&')">&amp;&amp;</button>
-                    
-                    <button class="calc-btn" onclick="appendToDisplay('1')">1</button>
-                    <button class="calc-btn" onclick="appendToDisplay('2')">2</button>
-                    <button class="calc-btn" onclick="appendToDisplay('3')">3</button>
-                    <button class="calc-btn operator" onclick="appendToDisplay('||')">||</button>
-                    <button class="calc-btn operator" onclick="appendToDisplay('!')">!</button>
-                    
-                    <button class="calc-btn zero" onclick="appendToDisplay('0')">0</button>
-                    <button class="calc-btn" onclick="appendToDisplay('.')">.</button>
-                    <button class="calc-btn" onclick="backspace()">⌫</button>
                     <button class="calc-btn equals" onclick="calculate()">=</button>
-                    <button class="calc-btn operator" onclick="appendToDisplay('==')">==</button>
                 </div>
             </div>
         </div>
@@ -1232,7 +1220,7 @@
                 <h3>Máy Tính Online - Giải Pháp Tính Toán Toàn Diện</h3>
                 <p>Trong thời đại công nghệ số hiện nay, việc có một công cụ tính toán đáng tin cậy và dễ tiếp cận là nhu cầu thiết yếu của mọi người. Máy tính online tại May-tinh.com được thiết kế để đáp ứng nhu cầu đó, mang đến một nền tảng tính toán trực tuyến hoàn toàn miễn phí, chính xác và dễ sử dụng cho mọi người Việt Nam.</p>
                 
-                <p>Máy tính của chúng tôi không chỉ là một công cụ đơn giản thực hiện các phép tính cơ bản, mà còn là một giải pháp toàn diện với nhiều tính năng nâng cao. Từ máy tính cơ bản cho các phép tính cộng, trừ, nhân, chia, đến máy tính khoa học với các hàm lượng giác, logarit, lũy thừa, và máy tính lập trình với các phép toán trên bit, tất cả đều được tích hợp trong một giao diện thân thiện và trực quan.</p>
+                <p>Máy tính của chúng tôi không chỉ là một công cụ đơn giản thực hiện các phép tính cơ bản, mà còn là một giải pháp toàn diện với nhiều tính năng nâng cao. Từ máy tính cơ bản cho các phép tính cộng, trừ, nhân, chia, đến máy tính khoa học với các hàm lượng giác, logarit, lũy thừa, và máy tính giải tích với các phép toán vi phân, tích phân, tất cả đều được tích hợp trong một giao diện thân thiện và trực quan.</p>
                 
                 <p>Điểm đặc biệt của máy tính online của chúng tôi là khả năng truy cập từ mọi thiết bị có kết nối internet. Bạn không cần phải cài đặt bất kỳ phần mềm nào hay lo lắng về việc máy tính của mình có đủ cấu hình để chạy các ứng dụng nặng. Chỉ cần mở trình duyệt web và truy cập May-tinh.com, bạn đã có ngay một công cụ tính toán mạnh mẽ trong tay.</p>
                 
@@ -1267,7 +1255,7 @@
                     <li><strong>Luôn cập nhật:</strong> Máy tính online của chúng tôi luôn được cập nhật với các tính năng mới nhất và sửa lỗi mà bạn không cần làm gì cả.</li>
                     <li><strong>Đa nền tảng:</strong> Hoạt động tốt trên mọi hệ điều hành (Windows, macOS, Linux) và mọi thiết bị (máy tính, điện thoại, máy tính bảng).</li>
                     <li><strong>Tiết kiệm chi phí:</strong> Hoàn toàn miễn phí, không cần chi tiền mua máy tính cứng hay phần mềm đắt tiền.</li>
-                    <li><strong>Tính linh hoạt:</strong> Dễ dàng chuyển đổi giữa các loại máy tính khác nhau (cơ bản, khoa học, lập trình) chỉ với một cú nhấp chuột.</li>
+                    <li><strong>Tính linh hoạt:</strong> Dễ dàng chuyển đổi giữa các loại máy tính khác nhau (cơ bản, khoa học, giải tích) chỉ với một cú nhấp chuột.</li>
                     <li><strong>Lưu trữ lịch sử:</strong> Máy tính của chúng tôi lưu trữ lịch sử tính toán giúp bạn dễ dàng theo dõi và kiểm tra lại các phép tính trước đó.</li>
                     <li><strong>Bảo mật:</strong> Tất cả các phép tính được thực hiện trên trình duyệt của bạn, không có dữ liệu nào được gửi đến máy chủ, đảm bảo tính riêng tư.</li>
                 </ul>
@@ -1279,7 +1267,7 @@
                 
                 <p><strong>Máy tính khoa học:</strong> Dành cho học sinh, sinh viên và các chuyên gia cần thực hiện các phép tính phức tạp. Máy tính khoa học của chúng tôi có các hàm lượng giác (sin, cos, tan), logarit (log, ln), hàm mũ (e^x, 10^x), và các phép toán khác như giai thừa, giá trị tuyệt đối, và các hằng số toán học (π, e).</p>
                 
-                <p><strong>Máy tính lập trình:</strong> Được thiết kế cho các lập trình viên và kỹ sư phần mềm. Máy tính này hỗ trợ các phép toán trên bit (AND, OR, XOR, NOT), dịch bit (<<, >>), chuyển đổi giữa các hệ cơ số (nhị phân, bát phân, thập phân, thập lục phân), và các phép toán logic (&&, ||, !).</p>
+                <p><strong>Máy tính giải tích:</strong> Được thiết kế cho sinh viên và chuyên gia toán học cần thực hiện các phép toán giải tích như tích phân, vi phân, giới hạn, tổng, tích. Máy tính này hỗ trợ các hàm giải tích phổ biến và các hằng số toán học quan trọng.</p>
                 
                 <p>Ngoài ra, chúng tôi còn cung cấp các loại máy tính chuyên dụng khác như:</p>
                 
@@ -1314,12 +1302,13 @@
                     <li>Nhấn "=" để xem kết quả.</li>
                 </ol>
                 
-                <p><strong>Máy tính lập trình:</strong></p>
+                <p><strong>Máy tính giải tích:</strong></p>
                 <ol>
                     <li>Mở trình duyệt web và truy cập May-tinh.com.</li>
-                    <li>Chọn tab "Lập Trình" trên máy tính.</li>
-                    <li>Nhập số và chọn phép toán bit hoặc logic bạn muốn thực hiện.</li>
-                    <li>Sử dụng các nút chuyển đổi hệ cơ số (HEX, DEC, OCT, BIN) để đổi giữa các hệ số.</li>
+                    <li>Chọn tab "Giải Tích" trên máy tính.</li>
+                    <li>Nhập số và chọn hàm giải tích bạn muốn sử dụng (∫, d/dx, lim, ∑, ∏).</li>
+                    <li>Nhập biểu thức cần tính toán.</li>
+                    <li>Sử dụng các hàm lượng giác, logarit, và các hàm khác khi cần thiết.</li>
                     <li>Nhấn "=" để xem kết quả.</li>
                 </ol>
                 
@@ -1332,9 +1321,9 @@
                     <li><strong>Lưu trữ kết quả:</strong> Sử dụng các nút nhớ (M+, M-, MR, MC) để lưu trữ các kết quả tính toán và sử dụng lại sau này. Điều này đặc biệt hữu ích khi bạn cần sử dụng một giá trị nhiều lần trong các phép tính khác nhau.</li>
                     <li><strong>Kiểm tra lịch sử:</strong> Máy tính của chúng tôi hiển thị lịch sử các phép tính gần nhất, giúp bạn dễ dàng theo dõi và kiểm tra lại các phép tính trước đó.</li>
                     <li><strong>Sử dụng hàm khoa học:</strong> Khi sử dụng máy tính khoa học, hãy đảm bảo bạn đã chọn đúng đơn vị góc (DEG, RAD, GRAD) cho các hàm lượng giác. Máy tính của chúng tôi mặc định sử dụng độ (DEG).</li>
-                    <li><strong>Chuyển đổi hệ cơ số:</strong> Khi sử dụng máy tính lập trình, bạn có thể dễ dàng chuyển đổi giữa các hệ cơ số bằng cách nhập số và nhấn nút chuyển đổi tương ứng (HEX, DEC, OCT, BIN).</li>
-                    <li><strong>Sử dụng hằng số:</strong> Máy tính khoa học của chúng tôi có các hằng số toán học quan trọng như π (pi) và e (số Euler). Bạn có thể sử dụng chúng bằng cách nhấp vào nút tương ứng.</li>
-                    <li><strong>Tính toán lũy thừa:</strong> Để tính lũy thừa, bạn có thể sử dụng nút "^" trên máy tính khoa học hoặc lập trình. Ví dụ: 2^3 = 8.</li>
+                    <li><strong>Sử dụng hàm giải tích:</strong> Khi sử dụng máy tính giải tích, hãy nhập đúng cú pháp cho các hàm. Ví dụ: ∫(x^2)dx, d/dx(x^2), lim(x→0)(sin(x)/x).</li>
+                    <li><strong>Sử dụng hằng số:</strong> Máy tính khoa học và giải tích của chúng tôi có các hằng số toán học quan trọng như π (pi) và e (số Euler). Bạn có thể sử dụng chúng bằng cách nhấp vào nút tương ứng.</li>
+                    <li><strong>Tính toán lũy thừa:</strong> Để tính lũy thừa, bạn có thể sử dụng nút "^" trên máy tính khoa học hoặc giải tích. Ví dụ: 2^3 = 8.</li>
                 </ul>
                 
                 <h3>Ứng Dụng Thực Tế Của Máy Tính Trong Đời Sống</h3>
@@ -1348,7 +1337,7 @@
                 
                 <p><strong>Lập kế hoạch du lịch:</strong> Sử dụng máy tính để tính toán ngân sách du lịch, chuyển đổi tiền tệ, hoặc tính khoảng cách và thời gian di chuyển.</p>
                 
-                <p><strong>Giáo dục và học tập:</strong> Học sinh và sinh viên có thể sử dụng máy tính khoa học để giải các bài toán phức tạp, kiểm tra kết quả, và hiểu rõ hơn về các khái niệm toán học.</p>
+                <p><strong>Giáo dục và học tập:</strong> Học sinh và sinh viên có thể sử dụng máy tính khoa học và giải tích để giải các bài toán phức tạp, kiểm tra kết quả, và hiểu rõ hơn về các khái niệm toán học.</p>
                 
                 <p><strong>Công việc và kinh doanh:</strong> Các chuyên gia sử dụng máy tính để tính toán tỷ suất lợi nhuận, phân tích dữ liệu bán hàng, và lập kế hoạch tài chính.</p>
                 
@@ -1602,7 +1591,7 @@
                     </h2>
                     <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
                         <div class="accordion-body">
-                            Bạn có thể dễ dàng chuyển đổi giữa các loại máy tính bằng cách nhấp vào các tab ở trên cùng của máy tính: "Cơ Bản", "Khoa Học", và "Lập Trình". Mỗi tab sẽ hiển thị các chức năng tương ứng với loại máy tính đó.
+                            Bạn có thể dễ dàng chuyển đổi giữa các loại máy tính bằng cách nhấp vào các tab ở trên cùng của máy tính: "Cơ Bản", "Khoa Học", và "Giải Tích". Mỗi tab sẽ hiển thị các chức năng tương ứng với loại máy tính đó.
                         </div>
                     </div>
                 </div>
@@ -1638,7 +1627,7 @@
                     
                     <p>Đội ngũ của chúng tôi bao gồm các chuyên gia công nghệ, toán học và thiết kế giao diện người dùng, cùng làm việc để tạo ra một sản phẩm không chỉ chức năng mà còn thân thiện với người dùng. Chúng tôi liên tục cập nhật và cải tiến sản phẩm để đáp ứng nhu cầu ngày càng cao của người dùng.</p>
                     
-                    <p>Ngoài máy tính cơ bản, chúng tôi còn phát triển các loại máy tính chuyên dụng như máy tính khoa học, máy tính tài chính, máy tính BMI, và nhiều công cụ khác để phục vụ mọi nhu cầu tính toán của bạn.</p>
+                    <p>Ngoài máy tính cơ bản, chúng tôi còn phát triển các loại máy tính chuyên dụng như máy tính khoa học, máy tính giải tích, máy tính tài chính, máy tính BMI, và nhiều công cụ khác để phục vụ mọi nhu cầu tính toán của bạn.</p>
                     
                     <p>Chúng tôi cam kết cung cấp dịch vụ miễn phí và không bao giờ thu thập thông tin cá nhân của người dùng. Tất cả các phép tính được thực hiện trực tiếp trên trình duyệt của bạn, đảm bảo tính riêng tư và bảo mật.</p>
                 </div>
@@ -1682,7 +1671,7 @@
                     <ul class="footer-links">
                         <li><a href="#">Máy Tính Cơ Bản</a></li>
                         <li><a href="#">Máy Tính Khoa Học</a></li>
-                        <li><a href="#">Máy Tính Lập Trình</a></li>
+                        <li><a href="#">Máy Tính Giải Tích</a></li>
                         <li><a href="#">Máy Tính Tài Chính</a></li>
                         <li><a href="#">Máy Tính BMI</a></li>
                         <li><a href="#">Máy Tính Chuyển Đổi</a></li>
@@ -1867,6 +1856,13 @@
                 // Replace display symbols with JavaScript operators
                 let expr = currentInput.replace(/×/g, '*').replace(/÷/g, '/').replace(/−/g, '-').replace(/\^/g, '**');
                 
+                // Handle special calculus functions
+                expr = expr.replace(/integral\(/g, 'Math.integral(');
+                expr = expr.replace(/derivative\(/g, 'Math.derivative(');
+                expr = expr.replace(/limit\(/g, 'Math.limit(');
+                expr = expr.replace(/sum\(/g, 'Math.sum(');
+                expr = expr.replace(/product\(/g, 'Math.product(');
+                
                 // Handle trigonometric functions with angle mode conversion
                 if (angleMode === 'deg') {
                     // Convert degrees to radians for JavaScript Math functions
@@ -1878,6 +1874,11 @@
                     expr = expr.replace(/asin\(/g, '(180/Math.PI)*Math.asin(');
                     expr = expr.replace(/acos\(/g, '(180/Math.PI)*Math.acos(');
                     expr = expr.replace(/atan\(/g, '(180/Math.PI)*Math.atan(');
+                    
+                    // Handle hyperbolic functions
+                    expr = expr.replace(/sinh\(/g, 'Math.sinh(');
+                    expr = expr.replace(/cosh\(/g, 'Math.cosh(');
+                    expr = expr.replace(/tanh\(/g, 'Math.tanh(');
                 } else if (angleMode === 'grad') {
                     // Convert gradians to radians for JavaScript Math functions
                     expr = expr.replace(/sin\(/g, 'Math.sin(Math.PI/200*');
@@ -1888,6 +1889,11 @@
                     expr = expr.replace(/asin\(/g, '(200/Math.PI)*Math.asin(');
                     expr = expr.replace(/acos\(/g, '(200/Math.PI)*Math.acos(');
                     expr = expr.replace(/atan\(/g, '(200/Math.PI)*Math.atan(');
+                    
+                    // Handle hyperbolic functions
+                    expr = expr.replace(/sinh\(/g, 'Math.sinh(');
+                    expr = expr.replace(/cosh\(/g, 'Math.cosh(');
+                    expr = expr.replace(/tanh\(/g, 'Math.tanh(');
                 } else {
                     // Radians mode (default for JavaScript)
                     expr = expr.replace(/sin\(/g, 'Math.sin(');
@@ -1896,6 +1902,11 @@
                     expr = expr.replace(/asin\(/g, 'Math.asin(');
                     expr = expr.replace(/acos\(/g, 'Math.acos(');
                     expr = expr.replace(/atan\(/g, 'Math.atan(');
+                    
+                    // Handle hyperbolic functions
+                    expr = expr.replace(/sinh\(/g, 'Math.sinh(');
+                    expr = expr.replace(/cosh\(/g, 'Math.cosh(');
+                    expr = expr.replace(/tanh\(/g, 'Math.tanh(');
                 }
                 
                 // Replace other function names with Math equivalents
@@ -1995,59 +2006,6 @@
             memory = 0;
         }
         
-        // Conversion functions
-        function convertToHex(event) {
-            event.preventDefault();
-            try {
-                let num = parseInt(currentInput);
-                if (!isNaN(num)) {
-                    currentInput = num.toString(16).toUpperCase();
-                    updateDisplay();
-                }
-            } catch (error) {
-                // Ignore error
-            }
-        }
-        
-        function convertToDec(event) {
-            event.preventDefault();
-            try {
-                let num = parseInt(currentInput, 16);
-                if (!isNaN(num)) {
-                    currentInput = num.toString();
-                    updateDisplay();
-                }
-            } catch (error) {
-                // Ignore error
-            }
-        }
-        
-        function convertToOct(event) {
-            event.preventDefault();
-            try {
-                let num = parseInt(currentInput);
-                if (!isNaN(num)) {
-                    currentInput = num.toString(8);
-                    updateDisplay();
-                }
-            } catch (error) {
-                // Ignore error
-            }
-        }
-        
-        function convertToBin(event) {
-            event.preventDefault();
-            try {
-                let num = parseInt(currentInput);
-                if (!isNaN(num)) {
-                    currentInput = num.toString(2);
-                    updateDisplay();
-                }
-            } catch (error) {
-                // Ignore error
-            }
-        }
-        
         // Switch calculator
         function switchCalculator(type, event) {
             event.preventDefault();
@@ -2060,7 +2018,7 @@
             // Hide all button sets
             document.getElementById('basic-buttons').style.display = 'none';
             document.getElementById('scientific-buttons').style.display = 'none';
-            document.getElementById('programmer-buttons').style.display = 'none';
+            document.getElementById('calculus-buttons').style.display = 'none';
             document.getElementById('angle-mode').classList.remove('active');
             
             // Add active class to clicked tab
@@ -2072,8 +2030,9 @@
             } else if (type === 'scientific') {
                 document.getElementById('scientific-buttons').style.display = 'grid';
                 document.getElementById('angle-mode').classList.add('active');
-            } else if (type === 'programmer') {
-                document.getElementById('programmer-buttons').style.display = 'grid';
+            } else if (type === 'calculus') {
+                document.getElementById('calculus-buttons').style.display = 'grid';
+                document.getElementById('angle-mode').classList.add('active');
             }
             
             // Reset display
@@ -2200,7 +2159,7 @@
         "@type": "WebSite",
         "name": "Máy Tính Online - May-tinh.com",
         "url": "https://may-tinh.com",
-        "description": "Máy tính online miễn phí với nhiều chức năng: máy tính cơ bản, khoa học, tài chính, BMI, chuyển đổi đơn vị. Dễ sử dụng, chính xác, hỗ trợ mọi thiết bị.",
+        "description": "Máy tính online miễn phí với nhiều chức năng: máy tính cơ bản, khoa học, giải tích, tài chính, BMI, chuyển đổi đơn vị. Dễ sử dụng, chính xác, hỗ trợ mọi thiết bị.",
         "potentialAction": {
             "@type": "SearchAction",
             "target": "https://may-tinh.com/search?q={search_term_string}",
@@ -2284,7 +2243,7 @@
                 "name": "Làm thế nào để chuyển giữa các loại máy tính khác nhau?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Bạn có thể dễ dàng chuyển đổi giữa các loại máy tính bằng cách nhấp vào các tab ở trên cùng của máy tính: 'Cơ Bản', 'Khoa Học', và 'Lập Trình'. Mỗi tab sẽ hiển thị các chức năng tương ứng với loại máy tính đó."
+                    "text": "Bạn có thể dễ dàng chuyển đổi giữa các loại máy tính bằng cách nhấp vào các tab ở trên cùng của máy tính: 'Cơ Bản', 'Khoa Học', và 'Giải Tích'. Mỗi tab sẽ hiển thị các chức năng tương ứng với loại máy tính đó."
                 }
             },
             {
